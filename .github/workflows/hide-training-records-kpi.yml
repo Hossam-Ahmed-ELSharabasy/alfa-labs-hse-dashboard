@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'training.html'
+      - '.github/workflows/hide-training-records-kpi.yml'
 permissions:
   contents: write
 jobs:
