@@ -148,6 +148,12 @@ html{scroll-behavior:smooth}body{font-family:Arial,Tahoma,sans-serif;background:
 .kpis .kpi-value{text-decoration:none!important}
 .kpis .kpi-value,.kpis .kpi-value *{border-bottom:0!important;text-decoration:none!important}
 </style>
+
+<style id="remove-dashboard-title-circles">
+/* FINAL: remove decorative colored circles behind dashboard card titles */
+.card-title::before,.card-title::after,.card-title h3::before,.card-title h3::after,.card-title span::before,.card-title span::after{content:none!important;display:none!important;background:none!important;box-shadow:none!important;border:0!important;}
+.card-title{position:relative;overflow:visible!important;}
+</style>
 </head>
 <body>
 <aside class="sidebar" id="sidebar">
