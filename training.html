@@ -32,6 +32,48 @@
 /* Hide Training Records KPI: source row count is not a real training metric */
 .kpi.k1{display:none!important}
 @media(min-width:1201px){.kpis{grid-template-columns:repeat(5,1fr)}}
+
+/* Global Standard HSE Footer */
+.footer{
+  margin-top:22px!important;
+  background:#082b52!important;
+  color:#fff!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:16px 24px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:18px!important;
+  border-top:1px solid rgba(255,255,255,.10)!important;
+  text-align:center!important;
+}
+.footer-brand{font-size:16px!important;font-weight:700!important;line-height:1.4!important;letter-spacing:0!important}
+.footer-copy{font-size:12px!important;font-weight:600!important;line-height:1.55!important;text-align:center!important}
+.footer-copy small{font-size:10px!important;font-weight:500!important;opacity:.82!important}
+.footer-en{font-size:10px!important;font-weight:500!important;opacity:.82!important}
+.footer-tag{font-size:12px!important;font-weight:600!important;line-height:1.4!important;white-space:nowrap!important;opacity:.9!important}
+.footer .ar,.footer .eng,.footer .tag{font-size:12px!important;line-height:1.55!important}
+@media(max-width:700px){
+  .footer{
+    margin-top:16px!important;
+    padding:14px 12px!important;
+    flex-direction:column!important;
+    gap:5px!important;
+    text-align:center!important;
+  }
+  .footer-brand{font-size:14px!important}
+  .footer-copy,.footer .ar,.footer .eng,.footer .tag{font-size:10px!important;line-height:1.5!important}
+  .footer-copy small{font-size:9px!important}
+  .footer-en{font-size:9px!important}
+  .footer-tag{white-space:normal!important;max-width:100%!important}
+}
+@media(max-width:390px){
+  .footer{padding:12px 10px!important;gap:4px!important}
+  .footer-brand{font-size:13px!important}
+  .footer-copy,.footer .ar,.footer .eng,.footer .tag{font-size:9px!important}
+  .footer-copy small,.footer-en{font-size:8px!important}
+}
 </style>
 </head>
 <body>
