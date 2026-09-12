@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b3157">
+<title>Alfa Labs HSE | Safety Management</title>
+<link rel="icon" href="./LOGOG.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0b3157;--navy2:#17365d;--blue:#1976d2;--red:#e5252a;--orange:#d97722;--green:#23834b;--yellow:#a87500;--bg:#f4f7fb;--text:#17365d;--muted:#71808e;--border:#e3eaf1;--white:#fff}
+html{scroll-behavior:smooth}body{font-family:Arial,Tahoma,sans-serif;background:var(--bg);color:var(--text);min-width:0}button,input{font:inherit}
+/* SIDEBAR */
+.sidebar{position:fixed!important;left:0!important;right:auto!important;top:0;width:230px;height:100vh;background:var(--navy);color:#fff;padding:20px 14px;z-index:1000;overflow-y:auto;direction:rtl;box-shadow:2px 0 12px rgba(10,40,70,.1)}
+.logo{text-align:center;padding:0 0 18px;border-bottom:1px solid rgba(255,255,255,.18);margin-bottom:16px}.logo img{width:102px;height:74px;object-fit:contain;display:block;margin:0 auto 9px;background:#fff;border-radius:8px;padding:7px}.logo h1{font-size:26px;color:#fff;margin-top:4px}.logo h1:after{content:"";display:block;width:34px;height:3px;background:var(--red);border-radius:3px;margin:7px auto 0}.logo p{font-size:12px;color:#c9d9e9;margin-top:5px}.menu-title{font-size:11px;color:#9fb3c9;margin:18px 10px 8px;font-weight:bold}.menu a{display:flex;align-items:center;gap:11px;padding:12px 11px;margin:3px 0;border-radius:9px;color:#e2edf8;text-decoration:none;font-size:15px;line-height:1.35;transition:.2s}.menu a:hover{background:rgba(255,255,255,.1);color:#fff}.menu a.active{background:var(--blue);color:#fff;font-weight:bold}.icon{width:27px;min-width:27px;text-align:center;font-size:18px}.mobile-menu-btn{display:none;border:0;background:var(--navy);color:#fff;width:44px;height:44px;border-radius:9px;font-size:23px;cursor:pointer}.sidebar-overlay{display:none}
+/* MAIN */
+.main{margin-left:230px;min-height:100vh}.header{min-height:78px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:14px 30px;gap:15px}.header h2{font-size:28px;font-weight:800}.header p{color:#7b8997;font-size:15px;margin-top:6px}.header-actions{display:flex;align-items:center;gap:10px}.date-box{background:#f5f7fa;padding:11px 15px;border-radius:9px;color:#536577;font-size:13px}
+.content{padding:28px;max-width:1600px;margin:auto}.welcome{margin-bottom:22px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}.welcome h2{font-size:29px;margin-bottom:7px;font-weight:800}.welcome p{color:#788898;font-size:15px}.data-status{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);padding:9px 13px;border-radius:10px;color:#637689;font-size:12px;white-space:nowrap}.status-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px #e4f4ea}
+.section-label{font-size:12px;color:#7b8997;font-weight:800;letter-spacing:.5px;margin:0 0 10px 2px;text-transform:uppercase}
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:22px}.kpi{background:#fff;border:1px solid #e7ecf1;border-radius:15px;padding:17px 16px;box-shadow:0 4px 15px rgba(25,55,85,.04);cursor:pointer;transition:.18s;position:relative;overflow:hidden}.kpi:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(25,55,85,.09);border-color:#cfdce8}.kpi:after{content:"";position:absolute;inset:auto 0 0 0;height:4px;background:#315d91}.kpi.critical:after{background:var(--red)}.kpi.high:after{background:var(--orange)}.kpi.open:after{background:#315d91}.kpi.progress:after{background:var(--blue)}.kpi.closed:after{background:var(--green)}.kpi-top{display:flex;justify-content:space-between;align-items:center;gap:8px}.kpi-label{color:#66798c;font-size:13px;font-weight:800}.kpi-icon{width:34px;height:34px;border-radius:9px;background:#edf4fb;display:flex;align-items:center;justify-content:center;font-size:17px;flex:0 0 auto}.kpi-value{font-size:31px;font-weight:900;margin-top:10px}.kpi-sub{font-size:11px;margin-top:6px;color:#84919d}.kpi-link{font-size:10px;color:var(--blue);margin-top:7px;font-weight:800}
+/* GRID/CARDS */
+.grid{display:grid;grid-template-columns:1.45fr 1fr;gap:18px}.card{background:#fff;border:1px solid #e7ecf1;border-radius:15px;padding:20px;box-shadow:0 4px 15px rgba(25,55,85,.04)}.card-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px}.card-title h3{font-size:18px;font-weight:800}.card-title span{font-size:12px;color:#8b98a5}.chart-note{font-size:11px;color:#8996a2;margin-top:10px}
+/* BAR CHART */
+.bar-chart{height:255px;display:flex;align-items:flex-end;justify-content:space-around;gap:12px;padding:10px 5px 0;border-bottom:1px solid #e8edf2}.bar-wrap{height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;flex:1;min-width:50px}.bar-value{font-size:12px;font-weight:900;margin-bottom:6px;color:#536b83}.bar{width:min(54px,70%);background:#315d91;border-radius:7px 7px 0 0;min-height:10px;transition:height .5s ease}.bar.critical{background:var(--red)}.bar.high{background:var(--orange)}.bar.medium{background:#c5a328}.bar.low{background:#62a36d}.bar-label{margin-top:8px;font-size:12px;color:#60758a;font-weight:700}
+/* STATUS */
+.status-area{display:grid;grid-template-columns:190px 1fr;align-items:center;gap:20px;min-height:255px}.donut{width:175px;height:175px;border-radius:50%;background:conic-gradient(#315d91 0 54.7%,var(--orange) 54.7% 87.2%,var(--green) 87.2% 100%);display:flex;align-items:center;justify-content:center;margin:auto}.donut-inner{width:112px;height:112px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column}.donut-inner strong{font-size:27px}.donut-inner small{color:#8996a2;font-size:12px}.legend{display:flex;flex-direction:column;gap:12px}.legend-item{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;color:#657586}.legend-name{display:flex;align-items:center;gap:8px}.dot{width:10px;height:10px;border-radius:50%;flex:0 0 auto}.dot-open{background:#315d91}.dot-progress{background:var(--orange)}.dot-closed{background:var(--green)}.legend-count{font-weight:900;color:var(--text)}
+/* ACTIONS */
+.actions{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.action{border:1px solid #e8edf2;background:#f9fbfd;border-radius:12px;padding:14px;display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);transition:.18s}.action:hover{background:#f2f7fc;transform:translateY(-1px)}.action-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;background:#eef5fc}.action.critical .action-icon{background:#fff0f1}.action.high .action-icon{background:#fff3e9}.action strong{font-size:13px;display:block}.action span{font-size:11px;color:#7c8b99;display:block;margin-top:4px}.action-count{margin-right:auto;font-size:20px;font-weight:900}
+/* QUICK */
+.quick{margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.quick a{background:#fff;border:1px solid #e7ecf1;border-radius:12px;padding:15px;text-decoration:none;color:var(--text);font-weight:800;font-size:13px;text-align:center;transition:.18s}.quick a:hover{border-color:#bfd2e5;box-shadow:0 6px 16px rgba(25,55,85,.06)}
+/* FOOTER */
+.footer{margin-top:24px;background:linear-gradient(100deg,#06264a,#0b3d70);color:#fff;min-height:125px;padding:24px 30px;display:flex;align-items:center;justify-content:space-between;gap:24px}.footer-brand{font-size:30px;font-weight:900}.footer-copy{text-align:center;font-size:15px;font-weight:800;line-height:1.7}.footer-copy small{font-size:12px;opacity:.9}.footer-tag{font-size:18px;font-weight:800;white-space:nowrap}
+/* ERROR */
+.load-error{display:none;background:#fff2f2;border:1px solid #f1c6c6;color:#a52b31;border-radius:12px;padding:14px;margin-bottom:18px;font-size:13px}.load-error.show{display:block}
+/* TABLET */
+@media(max-width:1250px){.kpis{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:1fr}.quick{grid-template-columns:repeat(2,1fr)}.footer{flex-wrap:wrap}.footer-tag{white-space:normal}}
+@media(max-width:900px){.sidebar{width:215px}.main{margin-left:215px}.content{padding:22px}.status-area{grid-template-columns:1fr}.donut{width:160px;height:160px}}
+/* MOBILE */
+@media(max-width:700px){body{overflow-x:hidden}.sidebar{z-index:1001!important;width:285px;max-width:84vw;background:#0b3157!important;transform:translateX(-105%);transition:transform .25s ease;box-shadow:8px 0 25px rgba(0,0,0,.2)}.sidebar.open{transform:translateX(0)}.sidebar-overlay{position:fixed;inset:0;background:rgba(8,30,50,.52);z-index:999;display:none}.sidebar-overlay.show{display:block}.main{margin:0;width:100%}.header{min-height:72px;padding:12px 15px;gap:10px}.mobile-menu-btn{display:block!important;flex:0 0 auto}.header h2{font-size:21px}.header p{font-size:11px}.date-box{font-size:10px;padding:8px 9px;max-width:130px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.content{padding:15px}.welcome{display:block;margin-bottom:17px}.welcome h2{font-size:22px;line-height:1.4}.welcome p{font-size:13px;line-height:1.5}.data-status{margin-top:12px;width:max-content;max-width:100%;font-size:11px}.kpis{grid-template-columns:1fr 1fr;gap:10px}.kpi{padding:14px;border-radius:12px}.kpi-label{font-size:12px}.kpi-icon{width:32px;height:32px;font-size:16px}.kpi-value{font-size:26px}.kpi-sub{font-size:10px}.kpi-link{font-size:9px}.card{padding:15px;border-radius:12px}.card-title h3{font-size:16px}.bar-chart{height:215px}.bar{width:31px}.bar-value{font-size:10px}.bar-label{font-size:10px}.status-area{min-height:0}.legend{margin-top:4px}.actions{grid-template-columns:1fr}.quick{grid-template-columns:1fr 1fr}.quick a{font-size:12px;padding:13px}.footer{margin-top:18px;min-height:0;padding:22px 15px;display:flex;flex-direction:column;text-align:center;gap:10px}.footer-brand{font-size:26px}.footer-copy{font-size:14px}.footer-copy small{font-size:11px}.footer-tag{font-size:15px}}
+@media(max-width:390px){.header h2{font-size:18px}.header p{font-size:10px}.date-box{max-width:105px}.content{padding:12px}.kpi{padding:11px}.kpi-value{font-size:23px}.quick{gap:8px}}
+</style>
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+  <div class="logo"><img src="./LOGOG.png" alt="Alfa Labs Logo"><h1>Alfa Labs</h1><p>Alfa Labs • HSE Platform</p></div>
+  <div class="menu-title">MAIN</div>
+  <nav class="menu">
+    <a href="index.html" class="active"><span class="icon">🏠</span>الرئيسية</a>
+    <a href="capa.html"><span class="icon">📋</span>CAPA (Corrective &amp; Preventive Action)</a>
+    <a href="#"><span class="icon">👁️</span>Safety Observations</a>
+    <a href="#"><span class="icon">🚨</span>Incidents</a>
+    <a href="#"><span class="icon">⚠️</span>Near Miss</a>
+    <a href="#"><span class="icon">🔍</span>Inspections</a>
+    <a href="#"><span class="icon">🔥</span>Fire Safety</a>
+    <a href="#"><span class="icon">🩹</span>First Aid</a>
+    <a href="#"><span class="icon">🎓</span>Training</a>
+    <a href="#"><span class="icon">📊</span>Analytics</a>
+    <a href="#"><span class="icon">📄</span>Reports</a>
+  </nav>
+  <div class="menu-title">SYSTEM</div><nav class="menu"><a href="#"><span class="icon">⚙️</span>Settings</a></nav>
+</aside>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<main class="main">
+<header class="header">
+  <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+  <div><h2>لوحة متابعة السلامة</h2><p>Alfa Labs HSE Management Platform</p></div>
+  <div class="header-actions"><div class="date-box" id="dateBox">📅 Loading...</div></div>
+</header>
+<section class="content">
+  <div class="welcome">
+    <div><h2>مرحبًا بك في لوحة متابعة السلامة 👋</h2><p>Executive overview of HSE performance and immediate actions</p></div>
+    <div class="data-status"><span class="status-dot"></span><span id="dataStatus">CAPA live data connected</span></div>
+  </div>
+  <div class="load-error" id="loadError">تعذر تحميل بيانات CAPA. تأكد أن ملف <b>capa-data.json</b> موجود بجوار الصفحة.</div>
+
+  <div class="section-label">CAPA PERFORMANCE — LIVE DATA</div>
+  <div class="kpis">
+    <a class="kpi" href="capa.html" id="kTotal" style="text-decoration:none;color:inherit"><div class="kpi-top"><span class="kpi-label">Total CAPA</span><span class="kpi-icon">📋</span></div><div class="kpi-value" id="totalValue">—</div><div class="kpi-sub">All CAPA records</div><div class="kpi-link">View CAPA →</div></a>
+    <a class="kpi critical" href="capa.html?risk=Critical" id="kCritical" style="text-decoration:none;color:inherit"><div class="kpi-top"><span class="kpi-label">Critical</span><span class="kpi-icon">🔴</span></div><div class="kpi-value" id="criticalValue">—</div><div class="kpi-sub">Immediate attention</div><div class="kpi-link">Filter Critical →</div></a>
+    <a class="kpi high" href="capa.html?risk=High" id="kHigh" style="text-decoration:none;color:inherit"><div class="kpi-top"><span class="kpi-label">High</span><span class="kpi-icon">🟠</span></div><div class="kpi-value" id="highValue">—</div><div class="kpi-sub">High-risk CAPA</div><div class="kpi-link">Filter High →</div></a>
+    <a class="kpi open" href="capa.html?status=Open" id="kOpen" style="text-decoration:none;color:inherit"><div class="kpi-top"><span class="kpi-label">Open</span><span class="kpi-icon">⚠️</span></div><div class="kpi-value" id="openValue">—</div><div class="kpi-sub">Requires action</div><div class="kpi-link">Filter Open →</div></a>
+    <a class="kpi progress" href="capa.html?status=In%20Progress" id="kProgress" style="text-decoration:none;color:inherit"><div class="kpi-top"><span class="kpi-label">In Progress</span><span class="kpi-icon">🔄</span></div><div class="kpi-value" id="progressValue">—</div><div class="kpi-sub">Under implementation</div><div class="kpi-link">Filter In Progress →</div></a>
+    <a class="kpi closed" href="capa.html?status=Closed" id="kClosed" style="text-decoration:none;color:inherit"><div class="kpi-top"><span class="kpi-label">Closed</span><span class="kpi-icon">✅</span></div><div class="kpi-value" id="closedValue">—</div><div class="kpi-sub">Completed CAPA</div><div class="kpi-link">Filter Closed →</div></a>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-title"><h3>CAPA by Risk Severity</h3><span id="riskTotal">Live</span></div>
+      <div class="bar-chart" id="riskChart"></div>
+      <div class="chart-note">Counts are calculated directly from the current CAPA data file.</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><h3>CAPA Status</h3><span id="statusRate">Live</span></div>
+      <div class="status-area">
+        <div class="donut" id="statusDonut"><div class="donut-inner"><strong id="donutTotal">—</strong><small>Total CAPA</small></div></div>
+        <div class="legend">
+          <div class="legend-item"><span class="legend-name"><span class="dot dot-open"></span>Open</span><span class="legend-count" id="legendOpen">—</span></div>
+          <div class="legend-item"><span class="legend-name"><span class="dot dot-progress"></span>In Progress</span><span class="legend-count" id="legendProgress">—</span></div>
+          <div class="legend-item"><span class="legend-name"><span class="dot dot-closed"></span>Closed</span><span class="legend-count" id="legendClosed">—</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <div class="card-title"><h3>⚡ Action Required</h3><span>Based on current CAPA status</span></div>
+    <div class="actions">
+      <a class="action critical" href="capa.html?risk=Critical"><span class="action-icon">🔴</span><span><strong>Critical CAPA</strong><span>Immediate management attention</span></span><b class="action-count" id="actionCritical">—</b></a>
+      <a class="action high" href="capa.html?risk=High"><span class="action-icon">🟠</span><span><strong>High-Risk CAPA</strong><span>Priority corrective action</span></span><b class="action-count" id="actionHigh">—</b></a>
+      <a class="action" href="capa.html?status=Open"><span class="action-icon">⚠️</span><span><strong>Open CAPA</strong><span>Still requiring closure</span></span><b class="action-count" id="actionOpen">—</b></a>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <div class="card-title"><h3>Quick Actions</h3><span>HSE Management</span></div>
+    <div class="quick"><a href="capa.html">📋 View CAPA</a><a href="capa.html#add">➕ Add CAPA</a><a href="#">🚨 Report Incident</a><a href="#">👁️ Safety Observation</a></div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-brand">Alfa Labs</div>
+    <div class="footer-copy">جميع الحقوق محفوظة لـ الفا لاب<br>إدارة البيئة والسلامة والصحة المهنية<br><small>Created by Hossam Elsharabasy — HSE Manager</small></div>
+    <div class="footer-tag">Safer Today ... A Healthier Tomorrow</div>
+  </footer>
+</section>
+</main>
+<script>
+(function(){
+  const sidebar=document.getElementById('sidebar'),overlay=document.getElementById('sidebarOverlay'),button=document.getElementById('mobileMenuBtn');
+  function closeMenu(){sidebar.classList.remove('open');overlay.classList.remove('show');button.setAttribute('aria-expanded','false');document.body.style.overflow=''}
+  function openMenu(){sidebar.classList.add('open');overlay.classList.add('show');button.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'}
+  button.addEventListener('click',()=>sidebar.classList.contains('open')?closeMenu():openMenu());overlay.addEventListener('click',closeMenu);sidebar.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{if(innerWidth<=700)closeMenu()}));addEventListener('resize',()=>{if(innerWidth>700)closeMenu()});
+})();
+
+function norm(v){return String(v??'').trim().toLowerCase()}
+function riskKey(v){let s=norm(v);if(s.includes('critical')||s.includes('حرج'))return'Critical';if(s.includes('high')||s.includes('عالي'))return'High';if(s.includes('medium')||s.includes('متوسط'))return'Medium';if(s.includes('low')||s.includes('منخفض'))return'Low';return''}
+function statusKey(v){let s=norm(v);if(s.includes('open')||s.includes('مفتوح'))return'Open';if(s.includes('progress')||s.includes('تنفيذ'))return'In Progress';if(s.includes('closed')||s.includes('مغلق'))return'Closed';return''}
+const fmt=n=>Number(n||0).toLocaleString('en-US');
+function set(id,val){const e=document.getElementById(id);if(e)e.textContent=fmt(val)}
+function buildRiskChart(counts,total){const chart=document.getElementById('riskChart');const max=Math.max(...Object.values(counts),1);chart.innerHTML=Object.entries(counts).map(([k,v])=>`<div class="bar-wrap"><div class="bar-value">${fmt(v)}</div><div class="bar ${k.toLowerCase()}" style="height:${Math.max(4,(v/max)*88)}%"></div><div class="bar-label">${k}</div></div>`).join('');document.getElementById('riskTotal').textContent=fmt(total)+' records'}
+function buildDonut(open,progress,closed,total){const a=total?open/total*100:0,b=total?progress/total*100:0;document.getElementById('statusDonut').style.background=`conic-gradient(#315d91 0 ${a}%,#d97722 ${a}% ${a+b}%,#23834b ${a+b}% 100%)`;document.getElementById('statusRate').textContent=total?Math.round(closed/total*100)+'% closed':'—'}
+async function loadCapa(){
+  try{
+    const r=await fetch('./capa-data.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);const data=await r.json();if(!Array.isArray(data))throw new Error('Invalid data');
+    const total=data.length,critical=data.filter(x=>riskKey(x.risk)==='Critical').length,high=data.filter(x=>riskKey(x.risk)==='High').length,open=data.filter(x=>statusKey(x.status)==='Open').length,progress=data.filter(x=>statusKey(x.status)==='In Progress').length,closed=data.filter(x=>statusKey(x.status)==='Closed').length;
+    set('totalValue',total);set('criticalValue',critical);set('highValue',high);set('openValue',open);set('progressValue',progress);set('closedValue',closed);set('donutTotal',total);set('legendOpen',open);set('legendProgress',progress);set('legendClosed',closed);set('actionCritical',critical);set('actionHigh',high);set('actionOpen',open);
+    buildRiskChart({Critical:critical,High:high,Medium:data.filter(x=>riskKey(x.risk)==='Medium').length,Low:data.filter(x=>riskKey(x.risk)==='Low').length},total);buildDonut(open,progress,closed,total);
+    document.getElementById('dataStatus').textContent='CAPA live data connected • '+fmt(total)+' records';
+    document.getElementById('dateBox').textContent='📅 2026 • Live CAPA';
+  }catch(e){console.error(e);document.getElementById('loadError').classList.add('show');document.getElementById('dataStatus').textContent='CAPA data unavailable';document.getElementById('dateBox').textContent='📅 Data unavailable'}
+}
+loadCapa();
+</script>
+</body>
+</html>
