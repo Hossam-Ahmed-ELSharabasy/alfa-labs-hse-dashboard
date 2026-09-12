@@ -269,6 +269,14 @@ body{margin:0;font-family:Arial,"Segoe UI",Tahoma,sans-serif;background:var(--bg
   .table-wrap td{font-size:13px !important}
   .table-wrap td::before{flex-basis:92px;font-size:11px}
 }
+/* UNIFIED HSE HEADER */
+.unified-header{min-height:82px;height:auto;background:#fff;border-bottom:1px solid #e3eaf1;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 28px;direction:ltr;position:sticky;top:0;z-index:30}
+.unified-left{display:flex;align-items:center;gap:13px;min-width:0}.unified-title{text-align:left;min-width:0}
+.unified-title h1,.unified-title h2{margin:0;font-size:25px;font-weight:800;color:#17365d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.unified-title p{margin:5px 0 0;color:#71808e;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.unified-meta{display:flex;align-items:center;gap:14px;flex:0 0 auto;direction:ltr}.live-clock{background:#f5f7fa;border:1px solid #e3eaf1;border-radius:10px;padding:9px 12px;color:#17365d;font-size:12px;font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}.update-status{display:flex;align-items:center;gap:8px;color:#637689;font-size:12px;font-weight:700;white-space:nowrap}.update-dot{width:9px;height:9px;border-radius:50%;background:#23834b;box-shadow:0 0 0 4px #e4f4ea;animation:updatePulse 1.7s ease-in-out infinite}@keyframes updatePulse{0%,100%{opacity:1;box-shadow:0 0 0 4px #e4f4ea}50%{opacity:.35;box-shadow:0 0 0 7px rgba(35,131,75,.06)}}
+@media(max-width:700px){.unified-header{min-height:70px;padding:10px 14px;gap:8px}.unified-left{gap:9px}.unified-title h1,.unified-title h2{font-size:19px}.unified-title p{font-size:10px;margin-top:3px}.unified-meta{gap:6px;flex-direction:column;align-items:flex-end}.live-clock{font-size:10px;padding:6px 8px}.update-status{font-size:9px;gap:5px}.update-dot{width:7px;height:7px;box-shadow:0 0 0 3px #e4f4ea}}
+@media(max-width:430px){.unified-title h1,.unified-title h2{font-size:16px}.unified-title p{font-size:9px}.live-clock{font-size:9px;padding:5px 6px}.update-status{font-size:8px}.unified-meta{gap:4px}}
+
 </style>
 
 <style>
@@ -449,17 +457,7 @@ body{margin:0;font-family:Arial,"Segoe UI",Tahoma,sans-serif;background:var(--bg
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 <main class="main">
-<header class="header">
-  <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button>
-  <div class="header-title">
-    <img class="mobile-header-logo" src="./LOGOG.png" alt="Alfa Labs">
-    <div>
-      <h2>CAPA Management</h2>
-      <p>Corrective and Preventive Action</p>
-    </div>
-  </div>
-  <button class="back" onclick="location.href='index.html'">← الرئيسية</button>
-</header>
+<header class="unified-header"><div class="unified-left"><button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button><div class="unified-title"><h2>CAPA Management</h2><p>Corrective and Preventive Action</p></div></div><div class="unified-meta"><div class="live-clock" id="liveClock">Today • -- --- ---- • --:--:--</div><div class="update-status"><span class="update-dot"></span><span>Last updated today</span></div></div></header>
 
 <section class="content">
   <div class="banner">
@@ -838,6 +836,9 @@ fetch("./capa-data.json").then(r=>{if(!r.ok)throw Error();return r.json()}).then
 })();
 </script>
 
+<script>
+(function(){function pad(n){return String(n).padStart(2,'0')}function tick(){const el=document.getElementById('liveClock');if(!el)return;const d=new Date(),m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],hh=d.getHours(),ap=hh>=12?'PM':'AM',h=hh%12||12;el.textContent='Today • '+pad(d.getDate())+' '+m[d.getMonth()]+' '+d.getFullYear()+' • '+pad(h)+':'+pad(d.getMinutes())+':'+pad(d.getSeconds())+' '+ap}tick();setInterval(tick,1000)})();
+</script>
 </body>
 </html>
 <style>

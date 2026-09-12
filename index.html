@@ -39,6 +39,14 @@ html{scroll-behavior:smooth}body{font-family:Arial,Tahoma,sans-serif;background:
 /* MOBILE */
 @media(max-width:700px){body{overflow-x:hidden}.sidebar{z-index:1001!important;width:285px;max-width:84vw;background:#0b3157!important;transform:translateX(-105%);transition:transform .25s ease;box-shadow:8px 0 25px rgba(0,0,0,.2)}.sidebar.open{transform:translateX(0)}.sidebar-overlay{position:fixed;inset:0;background:rgba(8,30,50,.52);z-index:999;display:none}.sidebar-overlay.show{display:block}.main{margin:0;width:100%}.header{min-height:72px;padding:12px 15px;gap:10px}.mobile-menu-btn{display:block!important;flex:0 0 auto}.header h2{font-size:21px}.header p{font-size:11px}.date-box{font-size:10px;padding:8px 9px;max-width:130px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.content{padding:15px}.welcome{display:block;margin-bottom:17px}.welcome h2{font-size:22px;line-height:1.4}.welcome p{font-size:13px;line-height:1.5}.data-status{margin-top:12px;width:max-content;max-width:100%;font-size:11px}.kpis{grid-template-columns:1fr 1fr;gap:10px}.kpi{padding:14px;border-radius:12px}.kpi-label{font-size:12px}.kpi-icon{width:32px;height:32px;font-size:16px}.kpi-value{font-size:26px}.kpi-sub{font-size:10px}.kpi-link{font-size:9px}.card{padding:15px;border-radius:12px}.card-title h3{font-size:16px}.bar-chart{height:215px}.bar{width:31px}.bar-value{font-size:10px}.bar-label{font-size:10px}.status-area{min-height:0}.legend{margin-top:4px}.actions{grid-template-columns:1fr}.quick{grid-template-columns:1fr 1fr}.quick a{font-size:12px;padding:13px}.footer{margin-top:18px;min-height:0;padding:22px 15px;display:flex;flex-direction:column;text-align:center;gap:10px}.footer-brand{font-size:26px}.footer-copy{font-size:14px}.footer-copy small{font-size:11px}.footer-tag{font-size:15px}}
 @media(max-width:390px){.header h2{font-size:18px}.header p{font-size:10px}.date-box{max-width:105px}.content{padding:12px}.kpi{padding:11px}.kpi-value{font-size:23px}.quick{gap:8px}}
+/* UNIFIED HSE HEADER */
+.unified-header{min-height:82px;height:auto;background:#fff;border-bottom:1px solid #e3eaf1;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 28px;direction:ltr;position:sticky;top:0;z-index:30}
+.unified-left{display:flex;align-items:center;gap:13px;min-width:0}.unified-title{text-align:left;min-width:0}
+.unified-title h1,.unified-title h2{margin:0;font-size:25px;font-weight:800;color:#17365d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.unified-title p{margin:5px 0 0;color:#71808e;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.unified-meta{display:flex;align-items:center;gap:14px;flex:0 0 auto;direction:ltr}.live-clock{background:#f5f7fa;border:1px solid #e3eaf1;border-radius:10px;padding:9px 12px;color:#17365d;font-size:12px;font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}.update-status{display:flex;align-items:center;gap:8px;color:#637689;font-size:12px;font-weight:700;white-space:nowrap}.update-dot{width:9px;height:9px;border-radius:50%;background:#23834b;box-shadow:0 0 0 4px #e4f4ea;animation:updatePulse 1.7s ease-in-out infinite}@keyframes updatePulse{0%,100%{opacity:1;box-shadow:0 0 0 4px #e4f4ea}50%{opacity:.35;box-shadow:0 0 0 7px rgba(35,131,75,.06)}}
+@media(max-width:700px){.unified-header{min-height:70px;padding:10px 14px;gap:8px}.unified-left{gap:9px}.unified-title h1,.unified-title h2{font-size:19px}.unified-title p{font-size:10px;margin-top:3px}.unified-meta{gap:6px;flex-direction:column;align-items:flex-end}.live-clock{font-size:10px;padding:6px 8px}.update-status{font-size:9px;gap:5px}.update-dot{width:7px;height:7px;box-shadow:0 0 0 3px #e4f4ea}}
+@media(max-width:430px){.unified-title h1,.unified-title h2{font-size:16px}.unified-title p{font-size:9px}.live-clock{font-size:9px;padding:5px 6px}.update-status{font-size:8px}.unified-meta{gap:4px}}
+
 </style>
 </head>
 <body>
@@ -62,11 +70,7 @@ html{scroll-behavior:smooth}body{font-family:Arial,Tahoma,sans-serif;background:
 </aside>
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 <main class="main">
-<header class="header">
-  <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button>
-  <div><h2>لوحة متابعة السلامة</h2><p>Alfa Labs HSE Management Platform</p></div>
-  <div class="header-actions"><div class="date-box" id="dateBox">📅 Loading...</div></div>
-</header>
+<header class="unified-header"><div class="unified-left"><button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button><div class="unified-title"><h2>لوحة متابعة السلامة</h2><p>Alfa Labs HSE Management Platform</p></div></div><div class="unified-meta"><div class="live-clock" id="liveClock">Today • -- --- ---- • --:--:--</div><div class="update-status"><span class="update-dot"></span><span>Last updated today</span></div></div></header>
 <section class="content">
   <div class="welcome">
     <div><h2>مرحبًا بك في لوحة متابعة السلامة 👋</h2><p>Executive overview of HSE performance and immediate actions</p></div>
@@ -150,6 +154,9 @@ async function loadCapa(){
   }catch(e){console.error(e);document.getElementById('loadError').classList.add('show');document.getElementById('dataStatus').textContent='CAPA data unavailable';document.getElementById('dateBox').textContent='📅 Data unavailable'}
 }
 loadCapa();
+</script>
+<script>
+(function(){function pad(n){return String(n).padStart(2,'0')}function tick(){const el=document.getElementById('liveClock');if(!el)return;const d=new Date(),m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],hh=d.getHours(),ap=hh>=12?'PM':'AM',h=hh%12||12;el.textContent='Today • '+pad(d.getDate())+' '+m[d.getMonth()]+' '+d.getFullYear()+' • '+pad(h)+':'+pad(d.getMinutes())+':'+pad(d.getSeconds())+' '+ap}tick();setInterval(tick,1000)})();
 </script>
 </body>
 </html>
