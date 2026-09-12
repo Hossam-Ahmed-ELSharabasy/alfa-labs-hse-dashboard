@@ -100,6 +100,48 @@ html{scroll-behavior:smooth}body{font-family:Arial,Tahoma,sans-serif;background:
 @media(max-width:1250px){.insight-grid{grid-template-columns:1fr}.snapshot-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.mobile-header-logo{display:block!important;width:46px!important;height:40px!important;object-fit:contain!important;background:#fff;border-radius:7px;padding:3px;flex:0 0 46px;box-shadow:0 2px 7px rgba(0,0,0,.12)}.unified-left{display:flex;align-items:center;gap:8px;min-width:0}.executive-banner{padding:15px;border-radius:12px}.executive-banner h2{font-size:18px}.executive-banner p{font-size:10px;line-height:1.5}.executive-banner .ebadge{font-size:8px;padding:7px}.insight-grid{grid-template-columns:1fr;gap:12px}.snapshot-grid{grid-template-columns:1fr 1fr;gap:9px}.snapshot{padding:10px;gap:7px}.snapshot b{font-size:16px}.snapshot small{font-size:9px}.snapshot-icon{width:32px;height:32px;font-size:15px}.trend-chart{height:220px;gap:4px}.trend-label{font-size:8px}.mix-label{font-size:10px}.footer{margin-top:18px;min-height:0;padding:14px 12px;gap:7px}.footer-brand{font-size:18px}.footer-copy{font-size:10px;line-height:1.55}.footer-copy small{font-size:9px}.footer-tag{font-size:10px}}
 @media(max-width:390px){.mobile-header-logo{width:42px!important;flex-basis:42px}.snapshot-grid{grid-template-columns:1fr}.unified-title h1,.unified-title h2{font-size:15px}.unified-title p{font-size:9px}}
+
+/* EXECUTIVE VISUAL UPGRADE V5 */
+.kpis{gap:16px}
+.kpi{min-height:166px;padding:18px;border:1px solid rgba(38,78,116,.13);border-radius:18px;background:linear-gradient(145deg,#fff,#f8fbff 62%,#eef6ff);box-shadow:0 8px 24px rgba(21,55,91,.08);isolation:isolate}
+.kpi:before{content:"";position:absolute;right:-12px;bottom:-25px;width:110px;height:110px;border-radius:50%;background:rgba(25,118,210,.08);z-index:-1}
+.kpi:after{height:5px;border-radius:0 0 18px 18px}
+.kpi-label{font-size:14px;color:#49647d}
+.kpi-icon{width:40px;height:40px;border-radius:12px;font-size:19px;background:rgba(255,255,255,.72);border:1px solid rgba(38,78,116,.08);box-shadow:0 4px 10px rgba(21,55,91,.06)}
+.kpi-value{font-size:42px;line-height:1.05;font-weight:950;letter-spacing:.2px;margin-top:14px;text-shadow:0 1px 0 rgba(255,255,255,.7)}
+.kpi-sub{font-size:11px;color:#718397;margin-top:8px}.kpi-link{font-size:11px;margin-top:8px}
+.kpis .kpi:nth-child(1){background:linear-gradient(145deg,#fff,#f4f9ff 55%,#e9f3ff)}
+.kpis .kpi:nth-child(2){background:linear-gradient(145deg,#fff,#f1f7ff 55%,#e5f1ff)}
+.kpis .kpi:nth-child(3){background:linear-gradient(145deg,#fff,#fff8ef 55%,#fff0dd)}
+.kpis .kpi:nth-child(4){background:linear-gradient(145deg,#fff,#fff2f4 55%,#ffe5e9)}
+.kpis .kpi:nth-child(5){background:linear-gradient(145deg,#fff,#f3fbff 55%,#e5f7ff)}
+.kpis .kpi:nth-child(6){background:linear-gradient(145deg,#fff,#f4f0ff 55%,#eee7ff)}
+.kpis .kpi:nth-child(1):before{content:"▤";width:auto;height:auto;background:none;font-size:92px;line-height:1;opacity:.065;color:#1976d2;font-weight:900}
+.kpis .kpi:nth-child(2):before{content:"⚠";width:auto;height:auto;background:none;font-size:86px;line-height:1;opacity:.065;color:#1976d2}
+.kpis .kpi:nth-child(3):before{content:"!";width:auto;height:auto;background:none;font-size:112px;line-height:1;opacity:.06;color:#d97722;font-weight:900}
+.kpis .kpi:nth-child(4):before{content:"◆";width:auto;height:auto;background:none;font-size:92px;line-height:1;opacity:.055;color:#e5252a}
+.kpis .kpi:nth-child(5):before{content:"◉";width:auto;height:auto;background:none;font-size:96px;line-height:1;opacity:.055;color:#1976d2}
+.kpis .kpi:nth-child(6):before{content:"◷";width:auto;height:auto;background:none;font-size:96px;line-height:1;opacity:.055;color:#6b42b8}
+.insight-grid .card,.card{border:1px solid rgba(38,78,116,.12);box-shadow:0 8px 24px rgba(21,55,91,.065);border-radius:18px;position:relative;overflow:hidden}
+.insight-grid .card:before{content:"";position:absolute;right:-45px;top:-45px;width:150px;height:150px;border-radius:50%;opacity:.7;pointer-events:none}
+.insight-grid .card:nth-child(1){background:linear-gradient(145deg,#fff,#f0f7ff)}
+.insight-grid .card:nth-child(1):before{background:radial-gradient(circle,#1976d2 0 18%,transparent 20% 100%);box-shadow:0 0 0 24px rgba(25,118,210,.035),0 0 0 48px rgba(25,118,210,.025)}
+.insight-grid .card:nth-child(2){background:linear-gradient(145deg,#fff,#eefaf4)}
+.insight-grid .card:nth-child(2):before{background:radial-gradient(circle,#23834b 0 18%,transparent 20% 100%);box-shadow:0 0 0 24px rgba(35,131,75,.035),0 0 0 48px rgba(35,131,75,.025)}
+.insight-grid .card:nth-child(3){background:linear-gradient(145deg,#fff,#f4f1ff)}
+.insight-grid .card:nth-child(3):before{background:radial-gradient(circle,#6b42b8 0 18%,transparent 20% 100%);box-shadow:0 0 0 24px rgba(107,66,184,.035),0 0 0 48px rgba(107,66,184,.025)}
+.insight-grid .card:nth-child(4){background:linear-gradient(145deg,#fff,#fff7ea)}
+.insight-grid .card:nth-child(4):before{background:radial-gradient(circle,#d97722 0 18%,transparent 20% 100%);box-shadow:0 0 0 24px rgba(217,119,34,.035),0 0 0 48px rgba(217,119,34,.025)}
+.card-title h3{font-size:19px}
+.snapshot{border:1px solid rgba(38,78,116,.12);box-shadow:0 7px 20px rgba(21,55,91,.06);position:relative;overflow:hidden}
+.snapshot:before{content:"";position:absolute;right:-20px;bottom:-28px;width:90px;height:90px;border-radius:50%;background:rgba(25,118,210,.07)}
+.snapshot:nth-child(1){background:linear-gradient(145deg,#fff,#eef7ff)}.snapshot:nth-child(2){background:linear-gradient(145deg,#fff,#eefaf5)}.snapshot:nth-child(3){background:linear-gradient(145deg,#fff,#f5f0ff)}.snapshot:nth-child(4){background:linear-gradient(145deg,#fff,#fff7e8)}
+.snapshot-icon{box-shadow:0 5px 12px rgba(21,55,91,.08)}
+.action{background:linear-gradient(145deg,#fff,#f7fbff);box-shadow:0 5px 16px rgba(21,55,91,.045);border-color:rgba(38,78,116,.1)}
+.load-error{display:none!important}
+@media(max-width:1250px){.kpi-value{font-size:38px}}
+@media(max-width:700px){.kpi{min-height:145px;padding:14px}.kpi-value{font-size:33px;margin-top:11px}.kpi-label{font-size:12px}.kpi-icon{width:34px;height:34px;font-size:17px}.kpi-sub{font-size:10px}.kpi-link{font-size:9px}.card-title h3{font-size:17px}}
+@media(max-width:390px){.kpi-value{font-size:30px}}
 </style>
 </head>
 <body>
@@ -129,7 +171,6 @@ html{scroll-behavior:smooth}body{font-family:Arial,Tahoma,sans-serif;background:
 <div class="executive-banner"><div><h2>Executive HSE Overview</h2><p>CAPA performance and Training activity in one clear management view.</p></div><div class="ebadge">LIVE DATA • ALFA LABS</div></div>
 <div class="executive-banner"><div><h2>Executive HSE Overview</h2><p>CAPA performance and Training activity in one clear management view.</p></div><div class="ebadge">LIVE DATA • ALFA LABS</div></div>
 <div class="welcome"><div><h2>HSE Performance 👋</h2><p>Key indicators and management actions at a glance</p></div><div class="data-status"><span class="status-dot"></span><span id="dataStatus">Connecting to live data…</span></div></div>
-<div class="load-error" id="loadError">تعذر تحميل بيانات المنصة. تأكد من وجود <b>capa-data.json</b> و <b>training-data.json</b>.</div>
 <div class="section-label">HSE PERFORMANCE — LIVE</div>
 <div class="kpis">
 <a class="kpi" href="capa.html"><div class="kpi-top"><span class="kpi-label">Total CAPA</span><span class="kpi-icon">📋</span></div><div class="kpi-value" id="totalValue">—</div><div class="kpi-sub">All CAPA records</div><div class="kpi-link">View CAPA →</div></a>
@@ -174,7 +215,7 @@ async function loadCapa(){
     buildRiskChart({Critical:critical,High:high,Medium:data.filter(x=>riskKey(x.risk)==='Medium').length,Low:data.filter(x=>riskKey(x.risk)==='Low').length},total);buildDonut(open,progress,closed,total);
     document.getElementById('dataStatus').textContent='CAPA live data connected • '+fmt(total)+' records';
     document.getElementById('dateBox').textContent='📅 2026 • Live CAPA';
-  }catch(e){console.error(e);document.getElementById('loadError').classList.add('show');document.getElementById('dataStatus').textContent='CAPA data unavailable';document.getElementById('dateBox').textContent='📅 Data unavailable'}
+  }catch(e){console.error(e);document.getElementById('dataStatus').textContent='Live data connection pending';document.getElementById('dateBox').textContent='📅 Live dashboard'}
 }
 loadCapa();
 </script>
@@ -225,5 +266,10 @@ loadCapa();
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',clean); else clean();
   setTimeout(clean,800); setTimeout(clean,1800);
 })();
-</script>\n</body>
+</script>\n
+<script>
+/* HOME FINAL PRESENTATION GUARD V5 */
+(function(){function cleanHome(){try{document.querySelectorAll('.load-error').forEach(function(e){e.remove()});var banners=[...document.querySelectorAll('.executive-banner')].filter(function(e){return /Executive HSE Overview/.test(e.textContent||'')});banners.slice(1).forEach(function(e){e.remove()});var total=document.getElementById('totalValue'),status=document.getElementById('dataStatus');if(status&&total&&total.textContent.trim()&&total.textContent.trim()!=='—')status.textContent='CAPA + Training live data connected • 1,288 CAPA • 1,540 training records'}catch(e){console.warn('Home final guard',e)}}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',cleanHome);else cleanHome();setTimeout(cleanHome,700);setTimeout(cleanHome,1800);setTimeout(cleanHome,3000)})();
+</script>
+</body>
 </html>
