@@ -181,5 +181,22 @@ loadCapa();
 <script>
 (function(){function pad(n){return String(n).padStart(2,'0')}function tick(){const el=document.getElementById('liveClock');if(!el)return;const d=new Date(),m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],hh=d.getHours(),ap=hh>=12?'PM':'AM',h=hh%12||12;el.textContent='Today • '+pad(d.getDate())+' '+m[d.getMonth()]+' '+d.getFullYear()+' • '+pad(h)+':'+pad(d.getMinutes())+':'+pad(d.getSeconds())+' '+ap}tick();setInterval(tick,1000)})();
 </script>
+<script>
+/* HOME TRAINING SUMMARY V1 */
+(async function(){
+  try{
+    const r=await fetch('./training-summary.json',{cache:'no-store'});
+    if(!r.ok) throw new Error('Training summary HTTP '+r.status);
+    const d=await r.json();
+    const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=Number(v||0).toLocaleString('en-US')};
+    set('trainingValue',d.records);set('trainingHours',d.trainingHours);set('trainingEmployees',d.employees);set('trainingDepartments',d.departments);set('trainingPrograms',d.programs);set('trainingProviders',d.providers);
+    const trend=document.getElementById('trainingTrend');
+    if(trend){const ms=['Apr','May','Jun','Jul','Aug','Sep'],vs=ms.map(m=>Number((d.monthly||{})[m]||0)),mx=Math.max(...vs,1);trend.innerHTML=ms.map((m,i)=>'<div class="trend-col"><div class="trend-value">'+vs[i].toLocaleString('en-US')+'</div><div class="trend-bar" style="height:'+Math.max(5,vs[i]/mx*190)+'px"></div><div class="trend-label">'+m+'</div></div>').join('')}
+    const mix=document.getElementById('trainingMix');
+    if(mix){const entries=Object.entries(d.trainingTypes||{}),mx=Math.max(...entries.map(x=>x[1]),1);mix.innerHTML=entries.map(x=>'<div class="mix-row"><div class="mix-label">'+x[0]+'</div><div class="mix-count">'+Number(x[1]).toLocaleString('en-US')+'</div><div class="mix-track"><div class="mix-fill" style="width:'+(x[1]/mx*100)+'%"></div></div></div>').join('')}
+    const st=document.getElementById('dataStatus');if(st)st.textContent='CAPA + Training live data connected • 1,288 CAPA • '+Number(d.records).toLocaleString('en-US')+' training records';
+  }catch(e){console.error('Training summary load failed',e)}
+})();
+</script>
 </body>
 </html>
