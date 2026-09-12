@@ -89,6 +89,17 @@ html{scroll-behavior:smooth}body{font-family:Arial,Tahoma,sans-serif;background:
   .footer-copy,.footer .ar,.footer .eng,.footer .tag{font-size:9px!important}
   .footer-copy small,.footer-en{font-size:8px!important}
 }
+
+/* EXECUTIVE HOME V4 */
+.mobile-header-logo{display:none}
+.insight-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:18px}
+.training-trend{min-height:330px}.trend-chart{height:255px;display:flex;align-items:flex-end;gap:9px;padding:12px 5px 0;border-bottom:1px solid #e8edf2;overflow:hidden}.trend-col{height:100%;flex:1;min-width:25px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}.trend-value{font-size:10px;font-weight:900;color:#536b83;margin-bottom:5px}.trend-bar{width:70%;max-width:40px;background:#1976d2;border-radius:6px 6px 0 0;min-height:5px}.trend-label{font-size:9px;color:#71808e;margin-top:7px;white-space:nowrap}
+.mini-list{display:flex;flex-direction:column;gap:12px;padding-top:4px}.mix-row{display:grid;grid-template-columns:1fr 45px;gap:8px;align-items:center}.mix-label{font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mix-track{grid-column:1/-1;height:7px;background:#edf2f7;border-radius:8px;overflow:hidden}.mix-fill{height:100%;background:#315d91;border-radius:8px}.mix-count{text-align:right;font-size:12px;font-weight:900;color:#536b83}
+.snapshot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}.snapshot{background:#fff;border:1px solid #e7ecf1;border-radius:12px;padding:14px;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);transition:.18s}.snapshot:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(25,55,85,.06)}.snapshot-icon{width:38px;height:38px;border-radius:10px;background:#eef5fc;display:grid;place-items:center;font-size:18px;flex:0 0 auto}.snapshot b{display:block;font-size:19px}.snapshot small{display:block;font-size:10px;color:#7c8b99;margin-top:3px}.snapshot-arrow{margin-left:auto;font-weight:900;color:#1976d2}
+.executive-banner{background:linear-gradient(135deg,#0b3157,#145b9b);color:#fff;border-radius:15px;padding:20px 22px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:18px;box-shadow:0 8px 24px rgba(7,26,51,.12)}.executive-banner h2{font-size:22px;margin:0 0 6px}.executive-banner p{margin:0;color:#dbe9f8;font-size:12px}.executive-banner .ebadge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);padding:9px 12px;border-radius:10px;font-size:11px;white-space:nowrap}
+@media(max-width:1250px){.insight-grid{grid-template-columns:1fr}.snapshot-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.mobile-header-logo{display:block!important;width:46px!important;height:40px!important;object-fit:contain!important;background:#fff;border-radius:7px;padding:3px;flex:0 0 46px;box-shadow:0 2px 7px rgba(0,0,0,.12)}.unified-left{display:flex;align-items:center;gap:8px;min-width:0}.executive-banner{padding:15px;border-radius:12px}.executive-banner h2{font-size:18px}.executive-banner p{font-size:10px;line-height:1.5}.executive-banner .ebadge{font-size:8px;padding:7px}.insight-grid{grid-template-columns:1fr;gap:12px}.snapshot-grid{grid-template-columns:1fr 1fr;gap:9px}.snapshot{padding:10px;gap:7px}.snapshot b{font-size:16px}.snapshot small{font-size:9px}.snapshot-icon{width:32px;height:32px;font-size:15px}.trend-chart{height:220px;gap:4px}.trend-label{font-size:8px}.mix-label{font-size:10px}.footer{margin-top:18px;min-height:0;padding:14px 12px;gap:7px}.footer-brand{font-size:18px}.footer-copy{font-size:10px;line-height:1.55}.footer-copy small{font-size:9px}.footer-tag{font-size:10px}}
+@media(max-width:390px){.mobile-header-logo{width:42px!important;flex-basis:42px}.snapshot-grid{grid-template-columns:1fr}.unified-title h1,.unified-title h2{font-size:15px}.unified-title p{font-size:9px}}
 </style>
 </head>
 <body>
@@ -112,62 +123,30 @@ html{scroll-behavior:smooth}body{font-family:Arial,Tahoma,sans-serif;background:
 </aside>
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 <main class="main">
-<header class="unified-header"><div class="unified-left"><button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button><div class="unified-title"><h2>لوحة متابعة السلامة</h2><p>Alfa Labs HSE Management Platform</p></div></div><div class="unified-meta"><span id="dateBox" style="display:none"></span><div class="live-clock" id="liveClock">Today • -- --- ---- • --:--:--</div><div class="update-status"><span class="update-dot"></span><span>Last updated today</span></div></div></header>
+<header class="unified-header"><div class="unified-left"><button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button><img class="mobile-header-logo" src="./LOGOG.png" alt="Alfa Labs"><div class="unified-title"><h2>لوحة متابعة السلامة</h2><p>Alfa Labs HSE Management Platform</p></div></div><div class="unified-meta"><span id="dateBox" style="display:none"></span><div class="live-clock" id="liveClock">Today • -- --- ---- • --:--:--</div><div class="update-status"><span class="update-dot"></span><span>Last updated today</span></div></div></header>
 <section class="content">
-  <div class="welcome">
-    <div><h2>مرحبًا بك في لوحة متابعة السلامة 👋</h2><p>Executive overview of HSE performance and immediate actions</p></div>
-    <div class="data-status"><span class="status-dot"></span><span id="dataStatus">CAPA live data connected</span></div>
-  </div>
-  <div class="load-error" id="loadError">تعذر تحميل بيانات CAPA. تأكد أن ملف <b>capa-data.json</b> موجود بجوار الصفحة.</div>
-
-  <div class="section-label">CAPA PERFORMANCE — LIVE DATA</div>
-  <div class="kpis">
-    <a class="kpi" href="capa.html" id="kTotal" style="text-decoration:none;color:inherit"><div class="kpi-top"><span class="kpi-label">Total CAPA</span><span class="kpi-icon">📋</span></div><div class="kpi-value" id="totalValue">—</div><div class="kpi-sub">All CAPA records</div><div class="kpi-link">View CAPA →</div></a>
-    <a class="kpi critical" href="capa.html?risk=Critical" id="kCritical" style="text-decoration:none;color:inherit"><div class="kpi-top"><span class="kpi-label">Critical</span><span class="kpi-icon">🔴</span></div><div class="kpi-value" id="criticalValue">—</div><div class="kpi-sub">Immediate attention</div><div class="kpi-link">Filter Critical →</div></a>
-    <a class="kpi high" href="capa.html?risk=High" id="kHigh" style="text-decoration:none;color:inherit"><div class="kpi-top"><span class="kpi-label">High</span><span class="kpi-icon">🟠</span></div><div class="kpi-value" id="highValue">—</div><div class="kpi-sub">High-risk CAPA</div><div class="kpi-link">Filter High →</div></a>
-    <a class="kpi open" href="capa.html?status=Open" id="kOpen" style="text-decoration:none;color:inherit"><div class="kpi-top"><span class="kpi-label">Open</span><span class="kpi-icon">⚠️</span></div><div class="kpi-value" id="openValue">—</div><div class="kpi-sub">Requires action</div><div class="kpi-link">Filter Open →</div></a>
-    <a class="kpi progress" href="capa.html?status=In%20Progress" id="kProgress" style="text-decoration:none;color:inherit"><div class="kpi-top"><span class="kpi-label">In Progress</span><span class="kpi-icon">🔄</span></div><div class="kpi-value" id="progressValue">—</div><div class="kpi-sub">Under implementation</div><div class="kpi-link">Filter In Progress →</div></a>
-    <a class="kpi closed" href="capa.html?status=Closed" id="kClosed" style="text-decoration:none;color:inherit"><div class="kpi-top"><span class="kpi-label">Closed</span><span class="kpi-icon">✅</span></div><div class="kpi-value" id="closedValue">—</div><div class="kpi-sub">Completed CAPA</div><div class="kpi-link">Filter Closed →</div></a>
-  </div>
-
-  <div class="grid">
-    <div class="card">
-      <div class="card-title"><h3>CAPA by Risk Severity</h3><span id="riskTotal">Live</span></div>
-      <div class="bar-chart" id="riskChart"></div>
-      <div class="chart-note">Counts are calculated directly from the current CAPA data file.</div>
-    </div>
-    <div class="card">
-      <div class="card-title"><h3>CAPA Status</h3><span id="statusRate">Live</span></div>
-      <div class="status-area">
-        <div class="donut" id="statusDonut"><div class="donut-inner"><strong id="donutTotal">—</strong><small>Total CAPA</small></div></div>
-        <div class="legend">
-          <div class="legend-item"><span class="legend-name"><span class="dot dot-open"></span>Open</span><span class="legend-count" id="legendOpen">—</span></div>
-          <div class="legend-item"><span class="legend-name"><span class="dot dot-progress"></span>In Progress</span><span class="legend-count" id="legendProgress">—</span></div>
-          <div class="legend-item"><span class="legend-name"><span class="dot dot-closed"></span>Closed</span><span class="legend-count" id="legendClosed">—</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top:18px">
-    <div class="card-title"><h3>⚡ Action Required</h3><span>Based on current CAPA status</span></div>
-    <div class="actions">
-      <a class="action critical" href="capa.html?risk=Critical"><span class="action-icon">🔴</span><span><strong>Critical CAPA</strong><span>Immediate management attention</span></span><b class="action-count" id="actionCritical">—</b></a>
-      <a class="action high" href="capa.html?risk=High"><span class="action-icon">🟠</span><span><strong>High-Risk CAPA</strong><span>Priority corrective action</span></span><b class="action-count" id="actionHigh">—</b></a>
-      <a class="action" href="capa.html?status=Open"><span class="action-icon">⚠️</span><span><strong>Open CAPA</strong><span>Still requiring closure</span></span><b class="action-count" id="actionOpen">—</b></a>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top:18px">
-    <div class="card-title"><h3>Quick Actions</h3><span>HSE Management</span></div>
-    <div class="quick"><a href="capa.html">📋 View CAPA</a><a href="capa.html#add">➕ Add CAPA</a><a href="#">🚨 Report Incident</a><a href="#">👁️ Safety Observation</a></div>
-  </div>
-
-  <footer class="footer">
-    <div class="footer-brand">Alfa Labs</div>
-    <div class="footer-copy">جميع الحقوق محفوظة لـ الفا لاب<br>إدارة البيئة والسلامة والصحة المهنية<br><small>Created by Hossam Elsharabasy — HSE Manager</small></div>
-    <div class="footer-tag">Safer Today ... A Healthier Tomorrow</div>
-  </footer>
+  <div class="executive-banner"><div><h2>Executive HSE Overview</h2><p>CAPA performance and Training activity in one clear management view.</p></div><div class="ebadge">LIVE DATA • ALFA LABS</div></div>
+<div class="welcome"><div><h2>HSE Performance 👋</h2><p>Key indicators and management actions at a glance</p></div><div class="data-status"><span class="status-dot"></span><span id="dataStatus">Connecting to live data…</span></div></div>
+<div class="load-error" id="loadError">تعذر تحميل بيانات المنصة. تأكد من وجود <b>capa-data.json</b> و <b>training-data.json</b>.</div>
+<div class="section-label">HSE PERFORMANCE — LIVE</div>
+<div class="kpis">
+<a class="kpi" href="capa.html"><div class="kpi-top"><span class="kpi-label">Total CAPA</span><span class="kpi-icon">📋</span></div><div class="kpi-value" id="totalValue">—</div><div class="kpi-sub">All CAPA records</div><div class="kpi-link">View CAPA →</div></a>
+<a class="kpi open" href="capa.html?status=Open"><div class="kpi-top"><span class="kpi-label">Open CAPA</span><span class="kpi-icon">⚠️</span></div><div class="kpi-value" id="openValue">—</div><div class="kpi-sub">Requires corrective action</div><div class="kpi-link">Filter Open →</div></a>
+<a class="kpi high" href="capa.html?risk=High"><div class="kpi-top"><span class="kpi-label">High Risk</span><span class="kpi-icon">🟠</span></div><div class="kpi-value" id="highValue">—</div><div class="kpi-sub">Priority CAPA</div><div class="kpi-link">Filter High →</div></a>
+<a class="kpi critical" href="capa.html?risk=Critical"><div class="kpi-top"><span class="kpi-label">Critical</span><span class="kpi-icon">🔴</span></div><div class="kpi-value" id="criticalValue">—</div><div class="kpi-sub">Management attention</div><div class="kpi-link">Filter Critical →</div></a>
+<a class="kpi progress" href="training.html"><div class="kpi-top"><span class="kpi-label">Training Sessions</span><span class="kpi-icon">🎓</span></div><div class="kpi-value" id="trainingValue">—</div><div class="kpi-sub">Actual dated records</div><div class="kpi-link">View Training →</div></a>
+<a class="kpi closed" href="training.html"><div class="kpi-top"><span class="kpi-label">Training Hours</span><span class="kpi-icon">⏱️</span></div><div class="kpi-value" id="trainingHours">—</div><div class="kpi-sub">Recorded training hours</div><div class="kpi-link">Training analytics →</div></a>
+</div>
+<div class="insight-grid">
+<div class="card"><div class="card-title"><h3>CAPA Risk Profile</h3><span>Current distribution</span></div><div class="bar-chart" id="riskChart"></div></div>
+<div class="card"><div class="card-title"><h3>CAPA Status</h3><span id="statusRate">Live</span></div><div class="status-area"><div class="donut" id="statusDonut"><div class="donut-inner"><strong id="donutTotal">—</strong><small>Total CAPA</small></div></div><div class="legend"><div class="legend-item"><span class="legend-name"><span class="dot dot-open"></span>Open</span><span class="legend-count" id="legendOpen">—</span></div><div class="legend-item"><span class="legend-name"><span class="dot dot-progress"></span>In Progress</span><span class="legend-count" id="legendProgress">—</span></div><div class="legend-item"><span class="legend-name"><span class="dot dot-closed"></span>Closed</span><span class="legend-count" id="legendClosed">—</span></div></div></div></div>
+<div class="card training-trend"><div class="card-title"><h3>Training Trend</h3><span>Sessions by month</span></div><div class="trend-chart" id="trainingTrend"></div></div>
+<div class="card"><div class="card-title"><h3>Training Mix</h3><span>Top training types</span></div><div class="mini-list" id="trainingMix"></div></div>
+</div>
+<div class="card" style="margin-top:18px"><div class="card-title"><h3>⚡ Action Required</h3><span>Priority management view</span></div><div class="actions"><a class="action critical" href="capa.html?risk=Critical"><span class="action-icon">🔴</span><span><strong>Critical CAPA</strong><span>Immediate management attention</span></span><b class="action-count" id="actionCritical">—</b></a><a class="action high" href="capa.html?risk=High"><span class="action-icon">🟠</span><span><strong>High-Risk CAPA</strong><span>Priority corrective action</span></span><b class="action-count" id="actionHigh">—</b></a><a class="action" href="capa.html?status=Open"><span class="action-icon">⚠️</span><span><strong>Open CAPA</strong><span>Still requiring closure</span></span><b class="action-count" id="actionOpen">—</b></a></div></div>
+<div class="snapshot-grid"><a class="snapshot" href="training.html"><span class="snapshot-icon">👥</span><span><b id="trainingEmployees">—</b><small>Employees trained</small></span><span class="snapshot-arrow">→</span></a><a class="snapshot" href="training.html"><span class="snapshot-icon">🏢</span><span><b id="trainingDepartments">—</b><small>Departments covered</small></span><span class="snapshot-arrow">→</span></a><a class="snapshot" href="training.html"><span class="snapshot-icon">📚</span><span><b id="trainingPrograms">—</b><small>Training programs</small></span><span class="snapshot-arrow">→</span></a><a class="snapshot" href="training.html"><span class="snapshot-icon">🏷️</span><span><b id="trainingProviders">—</b><small>Training providers</small></span><span class="snapshot-arrow">→</span></a></div>
+<div class="quick"><a href="capa.html">📋 View CAPA</a><a href="training.html">🎓 View Training</a><a href="capa.html#add">➕ Add CAPA</a><a href="#">📊 Analytics</a></div>
+<footer class="footer"><div class="footer-brand">Alfa Labs</div><div class="footer-copy">جميع الحقوق محفوظة لـ الفا لاب<br>إدارة البيئة والسلامة والصحة المهنية<br><small>Created by Hossam Elsharabasy — HSE Manager</small></div><div class="footer-tag">Safer Today ... A Healthier Tomorrow</div></footer>
 </section>
 </main>
 <script>
