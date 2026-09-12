@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>CAPA | Alfa Labs HSE</title>
 
 <style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
     font-family:Arial,Tahoma,sans-serif;
     background:#f4f7fb;
-    color:#17365d;
+    color:#17365d
 }
+
+button,input,select{font-family:inherit}
 
 /* ===== SIDEBAR ===== */
 
@@ -31,71 +26,72 @@ body{
     height:100vh;
     background:#fff;
     border-left:1px solid #e4e9ef;
-    padding:22px 16px;
-    z-index:10;
+    padding:18px 14px;
+    z-index:20;
+    overflow-y:auto
 }
 
 .logo{
     text-align:center;
-    padding:8px 0 25px;
+    padding:8px 0 20px;
     border-bottom:1px solid #edf0f4;
-    margin-bottom:18px;
+    margin-bottom:15px
 }
 
 .logo img{
-    width:90px;
+    width:82px;
     height:auto;
     display:block;
-    margin:0 auto 10px;
+    margin:0 auto 8px
 }
 
 .logo h1{
-    font-size:25px;
-    color:#17365d;
+    font-size:24px;
+    color:#17365d
 }
 
 .logo p{
-    font-size:12px;
+    font-size:11px;
     color:#7a8998;
-    margin-top:5px;
+    margin-top:5px
 }
 
 .menu-title{
-    font-size:11px;
+    font-size:10px;
     color:#9aa7b4;
-    margin:18px 12px 8px;
+    margin:15px 11px 7px
 }
 
 .menu a{
     display:flex;
     align-items:center;
-    gap:12px;
-    padding:11px 13px;
-    margin:4px 0;
-    border-radius:10px;
+    gap:10px;
+    padding:10px 11px;
+    margin:3px 0;
+    border-radius:9px;
     color:#536577;
     text-decoration:none;
-    font-size:13px;
+    font-size:12px
 }
 
 .menu a:hover,
 .menu a.active{
     background:#eaf2fb;
     color:#17365d;
-    font-weight:bold;
+    font-weight:bold
 }
 
 .icon{
-    width:24px;
+    width:23px;
     text-align:center;
-    font-size:17px;
+    font-size:16px
 }
 
 /* ===== MAIN ===== */
 
 .main{
     margin-right:245px;
-    min-height:100vh;
+    min-height:100vh
 }
 
 /* ===== HEADER ===== */
@@ -107,256 +103,431 @@ body{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 30px;
+    padding:0 28px
 }
 
 .header h2{
-    font-size:23px;
+    font-size:22px
 }
 
 .header p{
     color:#7b8997;
-    font-size:13px;
-    margin-top:5px;
+    font-size:12px;
+    margin-top:5px
 }
 
 .back-btn{
     background:#17365d;
-    color:white;
-    border:none;
-    padding:10px 18px;
-    border-radius:9px;
+    color:#fff;
+    border:0;
+    padding:9px 16px;
+    border-radius:8px;
     cursor:pointer;
-    font-size:13px;
+    font-size:12px
 }
 
 /* ===== CONTENT ===== */
 
 .content{
-    padding:28px;
+    padding:24px
 }
 
 .page-title{
-    margin-bottom:22px;
+    margin-bottom:18px
 }
 
 .page-title h1{
-    font-size:25px;
-    margin-bottom:6px;
+    font-size:24px;
+    margin-bottom:5px
 }
 
 .page-title p{
-    color:#7b8997;
-    font-size:13px;
+    color:#788898;
+    font-size:13px
 }
 
 /* ===== KPI ===== */
 
 .kpis{
     display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:14px;
-    margin-bottom:22px;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+    margin-bottom:18px
 }
 
 .kpi{
-    background:white;
+    background:#fff;
     border:1px solid #e7ecf1;
-    border-radius:14px;
-    padding:17px;
-    box-shadow:0 4px 15px rgba(25,55,85,.04);
+    border-radius:13px;
+    padding:15px;
+    box-shadow:0 3px 12px rgba(25,55,85,.04)
 }
 
 .kpi-label{
     color:#7b8997;
-    font-size:12px;
+    font-size:11px
 }
 
 .kpi-value{
-    font-size:27px;
+    font-size:26px;
     font-weight:bold;
-    margin-top:9px;
+    margin-top:8px
 }
 
 .kpi.critical .kpi-value{
-    color:#c0392b;
+    color:#c0392b
 }
 
 .kpi.high .kpi-value{
-    color:#d66a25;
+    color:#d66a25
+}
+
+.kpi.medium .kpi-value{
+    color:#9c7a00
+}
+
+.kpi.low .kpi-value{
+    color:#43834a
 }
 
 .kpi.closed .kpi-value{
-    color:#25834b;
+    color:#25834b
 }
 
-/* ===== FILTER CARD ===== */
+.kpi.overdue .kpi-value{
+    color:#b52b20
+}
+
+/* ===== FILTERS ===== */
+
+.card{
+    background:#fff;
+    border:1px solid #e7ecf1;
+    border-radius:14px;
+    padding:18px;
+    box-shadow:0 3px 12px rgba(25,55,85,.04)
+}
 
 .filter-card{
-    background:white;
-    border:1px solid #e7ecf1;
-    border-radius:15px;
-    padding:20px;
-    margin-bottom:20px;
+    margin-bottom:18px
 }
 
 .filter-title{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:16px;
+    margin-bottom:14px
 }
 
 .filter-title h3{
-    font-size:16px;
+    font-size:15px
 }
 
 .clear-btn{
     border:1px solid #dce4eb;
     background:#fff;
     color:#536577;
-    padding:8px 13px;
+    padding:7px 12px;
     border-radius:8px;
     cursor:pointer;
+    font-size:11px
 }
 
 .filters{
     display:grid;
     grid-template-columns:repeat(5,1fr);
-    gap:12px;
+    gap:10px
 }
 
 .filter{
     display:flex;
     flex-direction:column;
-    gap:6px;
+    gap:5px
 }
 
 .filter label{
-    font-size:11px;
-    color:#7b8997;
+    font-size:10px;
+    color:#7b8997
 }
 
 .filter input,
 .filter select{
     width:100%;
-    height:38px;
+    height:36px;
     border:1px solid #dce4eb;
     border-radius:8px;
-    padding:0 10px;
+    padding:0 9px;
     background:#fff;
     color:#17365d;
     outline:none;
+    font-size:11px
 }
 
 .filter input:focus,
 .filter select:focus{
-    border-color:#315d91;
+    border-color:#315d91
 }
+
+/* ===== ANALYTICS ===== */
+
+.analytics{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:14px;
+    margin-bottom:18px
+}
+
+.chart-title{
+    font-size:14px;
+    margin-bottom:14px
+}
+
+.bars{
+    height:180px;
+    display:flex;
+    align-items:flex-end;
+    gap:12px;
+    padding:8px 4px;
+    border-bottom:1px solid #edf0f3
+}
+
+.bar-item{
+    flex:1;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    align-items:center;
+    gap:6px
+}
+
+.bar{
+    width:30px;
+    min-height:4px;
+    border-radius:6px 6px 0 0
+}
+
+.bar-label{
+    font-size:9px;
+    color:#71808e
+}
+
+.bar-value{
+    font-size:10px;
+    font-weight:bold
+}
+
+.status-list{
+    display:flex;
+    flex-direction:column;
+    gap:13px;
+    margin-top:8px
+}
+
+.status-row{
+    display:grid;
+    grid-template-columns:70px 1fr 35px;
+    align-items:center;
+    gap:8px
+}
+
+.status-name{
+    font-size:10px;
+    color:#657586
+}
+
+.status-track{
+    height:9px;
+    background:#edf1f4;
+    border-radius:10px;
+    overflow:hidden
+}
+
+.status-fill{
+    height:100%;
+    background:#315d91;
+    border-radius:10px
+}
+
+.status-num{
+    font-size:10px;
+    text-align:left;
+    font-weight:bold
+}
+
+.donut-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:22px;
+    min-height:180px
+}
+
+.donut{
+    width:145px;
+    height:145px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center
+}
+
+.donut-inner{
+    width:92px;
+    height:92px;
+    border-radius:50%;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column
+}
+
+.donut-inner strong{
+    font-size:22px
+}
+
+.donut-inner small{
+    font-size:9px;
+    color:#8996a2
+}
+
+.legend{
+    display:flex;
+    flex-direction:column;
+    gap:9px
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:10px;
+    color:#657586
+}
+
+.dot{
+    width:9px;
+    height:9px;
+    border-radius:50%
+}
+
+.dot1{background:#c0392b}
+.dot2{background:#d66a25}
+.dot3{background:#9c7a00}
+.dot4{background:#43834a}
 
 /* ===== TABLE ===== */
 
 .table-card{
-    background:white;
-    border:1px solid #e7ecf1;
-    border-radius:15px;
-    padding:20px;
-    overflow:hidden;
+    overflow:hidden
 }
 
 .table-head{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:18px;
+    margin-bottom:14px
 }
 
 .table-head h3{
-    font-size:16px;
+    font-size:15px
 }
 
 .result-count{
-    font-size:12px;
-    color:#7b8997;
+    font-size:11px;
+    color:#7b8997
 }
 
 .table-wrapper{
-    overflow-x:auto;
+    overflow-x:auto
 }
 
 table{
     width:100%;
     border-collapse:collapse;
-    min-width:1250px;
+    min-width:1200px
 }
 
 th{
     background:#f7f9fb;
     color:#71808e;
-    font-size:11px;
-    padding:13px 10px;
+    font-size:10px;
+    padding:11px 9px;
     text-align:right;
-    white-space:nowrap;
+    white-space:nowrap
 }
 
 td{
-    padding:12px 10px;
+    padding:11px 9px;
     border-bottom:1px solid #edf0f3;
-    font-size:11px;
-    vertical-align:top;
+    font-size:10px;
+    vertical-align:top
 }
 
 tr:hover td{
-    background:#fafcff;
+    background:#fafcff
 }
 
 .code{
     color:#315d91;
     font-weight:bold;
-    cursor:pointer;
+    cursor:pointer
 }
 
 .badge{
     display:inline-block;
-    padding:5px 9px;
-    border-radius:14px;
-    font-size:10px;
-    white-space:nowrap;
+    padding:4px 8px;
+    border-radius:13px;
+    font-size:9px;
+    white-space:nowrap
 }
 
-.critical{
+.r-critical{
     background:#fde9e7;
-    color:#b52b20;
+    color:#b52b20
 }
 
-.high-badge{
+.r-high{
     background:#fff0e7;
-    color:#c25d22;
+    color:#c25d22
 }
 
-.medium-badge{
+.r-medium{
     background:#fff8dc;
-    color:#9c7a00;
+    color:#9c7a00
 }
 
-.low-badge{
+.r-low{
     background:#edf6ed;
-    color:#43834a;
+    color:#43834a
 }
 
-.open-badge{
+.s-open{
     background:#eaf1fb;
-    color:#315d91;
+    color:#315d91
 }
 
-.progress-badge{
+.s-progress{
     background:#fff5df;
-    color:#a16b00;
+    color:#a16b00
 }
 
-.closed-badge{
+.s-closed{
     background:#e7f7ed;
-    color:#21834a;
+    color:#21834a
+}
+
+.s-overdue{
+    background:#fde9e7;
+    color:#b52b20
+}
+
+.empty{
+    text-align:center;
+    padding:35px;
+    color:#8a97a4;
+    font-size:12px
 }
 
 /* ===== MODAL ===== */
@@ -365,109 +536,130 @@ tr:hover td{
     display:none;
     position:fixed;
     inset:0;
-    background:rgba(15,35,55,.55);
+    background:rgba(15,35,55,.58);
     z-index:100;
     align-items:center;
     justify-content:center;
-    padding:20px;
+    padding:18px
 }
 
 .modal-box{
-    background:white;
-    width:900px;
+    background:#fff;
+    width:950px;
     max-width:100%;
     max-height:90vh;
     overflow:auto;
-    border-radius:18px;
-    padding:25px;
+    border-radius:17px;
+    padding:22px
 }
 
 .modal-head{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:22px;
+    margin-bottom:18px;
     border-bottom:1px solid #edf0f3;
-    padding-bottom:15px;
+    padding-bottom:13px
 }
 
 .modal-head h2{
-    font-size:20px;
+    font-size:18px
 }
 
 .close{
-    border:none;
+    border:0;
     background:#f1f4f7;
-    width:35px;
-    height:35px;
+    width:34px;
+    height:34px;
     border-radius:50%;
     cursor:pointer;
-    font-size:18px;
+    font-size:18px
 }
 
 .details{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:14px;
+    gap:11px
 }
 
 .detail{
     background:#f7f9fb;
-    border-radius:10px;
-    padding:12px;
+    border-radius:9px;
+    padding:11px
 }
 
 .detail.full{
-    grid-column:1/-1;
+    grid-column:1/-1
 }
 
 .detail-label{
-    font-size:10px;
+    font-size:9px;
     color:#8a97a4;
-    margin-bottom:6px;
+    margin-bottom:5px
 }
 
 .detail-value{
-    font-size:13px;
+    font-size:12px;
     color:#17365d;
-    line-height:1.6;
+    line-height:1.65;
+    white-space:pre-wrap
 }
 
 /* ===== RESPONSIVE ===== */
 
-@media(max-width:1200px){
+@media(max-width:1250px){
 
     .kpis{
-        grid-template-columns:repeat(3,1fr);
+        grid-template-columns:repeat(3,1fr)
     }
 
     .filters{
-        grid-template-columns:repeat(3,1fr);
+        grid-template-columns:repeat(3,1fr)
+    }
+
+    .analytics{
+        grid-template-columns:1fr 1fr
     }
 }
 
-@media(max-width:800px){
+@media(max-width:850px){
 
     .sidebar{
         position:relative;
         width:100%;
-        height:auto;
+        height:auto
     }
 
     .main{
-        margin-right:0;
+        margin-right:0
     }
 
-    .kpis{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .filters{
-        grid-template-columns:1fr;
+    .kpis,
+    .filters,
+    .analytics{
+        grid-template-columns:1fr 1fr
     }
 
     .details{
-        grid-template-columns:1fr;
+        grid-template-columns:1fr
+    }
+}
+
+@media(max-width:600px){
+
+    .kpis,
+    .filters,
+    .analytics{
+        grid-template-columns:1fr
+    }
+
+    .header{
+        padding:12px;
+        height:auto
+    }
+
+    .content{
+        padding:12px
     }
 }
 
@@ -569,329 +761,644 @@ tr:hover td{
 
 <main class="main">
 
-    <header class="header">
+<header class="header">
 
-        <div>
+    <div>
 
-            <h2>CAPA Management</h2>
+        <h2>CAPA Management</h2>
 
-            <p>Corrective and Preventive Action</p>
+        <p>Corrective and Preventive Action</p>
 
+    </div>
+
+    <button
+        class="back-btn"
+        onclick="location.href='index.html'">
+
+        ← الرئيسية
+
+    </button>
+
+</header>
+
+
+<section class="content">
+
+
+<div class="page-title">
+
+    <h1>إدارة CAPA</h1>
+
+    <p>
+        متابعة الملاحظات والإجراءات التصحيحية والوقائية
+    </p>
+
+</div>
+
+
+<!-- KPI -->
+
+<div class="kpis">
+
+    <div class="kpi">
+
+        <div class="kpi-label">
+            إجمالي CAPA
         </div>
 
-        <button class="back-btn" onclick="location.href='index.html'">
-            ← الرئيسية
+        <div class="kpi-value" id="totalCount">
+            0
+        </div>
+
+    </div>
+
+
+    <div class="kpi critical">
+
+        <div class="kpi-label">
+            Critical
+        </div>
+
+        <div class="kpi-value" id="criticalCount">
+            0
+        </div>
+
+    </div>
+
+
+    <div class="kpi high">
+
+        <div class="kpi-label">
+            High
+        </div>
+
+        <div class="kpi-value" id="highCount">
+            0
+        </div>
+
+    </div>
+
+
+    <div class="kpi medium">
+
+        <div class="kpi-label">
+            Medium
+        </div>
+
+        <div class="kpi-value" id="mediumCount">
+            0
+        </div>
+
+    </div>
+
+
+    <div class="kpi low">
+
+        <div class="kpi-label">
+            Low
+        </div>
+
+        <div class="kpi-value" id="lowCount">
+            0
+        </div>
+
+    </div>
+
+
+    <div class="kpi">
+
+        <div class="kpi-label">
+            Open
+        </div>
+
+        <div class="kpi-value" id="openCount">
+            0
+        </div>
+
+    </div>
+
+
+    <div class="kpi">
+
+        <div class="kpi-label">
+            In Progress
+        </div>
+
+        <div class="kpi-value" id="progressCount">
+            0
+        </div>
+
+    </div>
+
+
+    <div class="kpi closed">
+
+        <div class="kpi-label">
+            Closed
+        </div>
+
+        <div class="kpi-value" id="closedCount">
+            0
+        </div>
+
+    </div>
+
+
+    <div class="kpi overdue">
+
+        <div class="kpi-label">
+            Overdue
+        </div>
+
+        <div class="kpi-value" id="overdueCount">
+            0
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FILTERS -->
+
+<div class="card filter-card">
+
+    <div class="filter-title">
+
+        <h3>
+            🔎 البحث والفلاتر
+        </h3>
+
+        <button
+            class="clear-btn"
+            onclick="clearFilters()">
+
+            مسح الفلاتر
+
         </button>
 
-    </header>
+    </div>
 
 
-    <section class="content">
+    <div class="filters">
 
-        <div class="page-title">
 
-            <h1>إدارة CAPA</h1>
+        <div class="filter">
 
-            <p>
-                متابعة الملاحظات والإجراءات التصحيحية والوقائية
-            </p>
+            <label>
+                بحث شامل
+            </label>
+
+            <input
+                id="search"
+                type="text"
+                placeholder="Code / Observation / Owner..."
+                oninput="render()">
 
         </div>
 
 
-        <!-- KPI -->
+        <div class="filter">
 
-        <div class="kpis">
+            <label>
+                Area Name
+            </label>
 
-            <div class="kpi">
+            <select
+                id="area"
+                onchange="render()">
 
-                <div class="kpi-label">
-                    إجمالي CAPA
-                </div>
+                <option value="">
+                    الكل
+                </option>
 
-                <div class="kpi-value" id="totalCount">
-                    0
-                </div>
+            </select>
 
-            </div>
+        </div>
 
 
-            <div class="kpi critical">
+        <div class="filter">
 
-                <div class="kpi-label">
+            <label>
+                Governorate
+            </label>
+
+            <select
+                id="governorate"
+                onchange="render()">
+
+                <option value="">
+                    الكل
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="filter">
+
+            <label>
+                City
+            </label>
+
+            <select
+                id="city"
+                onchange="render()">
+
+                <option value="">
+                    الكل
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="filter">
+
+            <label>
+                Site Name
+            </label>
+
+            <select
+                id="site"
+                onchange="render()">
+
+                <option value="">
+                    الكل
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="filter">
+
+            <label>
+                HSE Responsibility
+            </label>
+
+            <select
+                id="responsibility"
+                onchange="render()">
+
+                <option value="">
+                    الكل
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="filter">
+
+            <label>
+                Owner
+            </label>
+
+            <select
+                id="owner"
+                onchange="render()">
+
+                <option value="">
+                    الكل
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="filter">
+
+            <label>
+                Risk Severity
+            </label>
+
+            <select
+                id="risk"
+                onchange="render()">
+
+                <option value="">
+                    الكل
+                </option>
+
+                <option>
                     Critical
-                </div>
+                </option>
 
-                <div class="kpi-value" id="criticalCount">
-                    0
-                </div>
-
-            </div>
-
-
-            <div class="kpi high">
-
-                <div class="kpi-label">
+                <option>
                     High
-                </div>
+                </option>
 
-                <div class="kpi-value" id="highCount">
-                    0
-                </div>
+                <option>
+                    Medium
+                </option>
 
-            </div>
+                <option>
+                    Low
+                </option>
+
+            </select>
+
+        </div>
 
 
-            <div class="kpi">
+        <div class="filter">
 
-                <div class="kpi-label">
+            <label>
+                Status
+            </label>
+
+            <select
+                id="status"
+                onchange="render()">
+
+                <option value="">
+                    الكل
+                </option>
+
+                <option>
                     Open
-                </div>
+                </option>
 
-                <div class="kpi-value" id="openCount">
-                    0
-                </div>
-
-            </div>
-
-
-            <div class="kpi">
-
-                <div class="kpi-label">
+                <option>
                     In Progress
-                </div>
+                </option>
 
-                <div class="kpi-value" id="progressCount">
-                    0
-                </div>
-
-            </div>
-
-
-            <div class="kpi closed">
-
-                <div class="kpi-label">
+                <option>
                     Closed
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="filter">
+
+            <label>
+                Hazard Type
+            </label>
+
+            <select
+                id="hazard"
+                onchange="render()">
+
+                <option value="">
+                    الكل
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="filter">
+
+            <label>
+                من تاريخ
+            </label>
+
+            <input
+                id="fromDate"
+                type="date"
+                onchange="render()">
+
+        </div>
+
+
+        <div class="filter">
+
+            <label>
+                إلى تاريخ
+            </label>
+
+            <input
+                id="toDate"
+                type="date"
+                onchange="render()">
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- ANALYTICS -->
+
+<div class="analytics">
+
+
+    <div class="card">
+
+        <div class="chart-title">
+            CAPA حسب مستوى الخطورة
+        </div>
+
+        <div
+            class="bars"
+            id="riskChart">
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="chart-title">
+            CAPA حسب الحالة
+        </div>
+
+        <div
+            class="status-list"
+            id="statusChart">
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="chart-title">
+            توزيع الخطورة
+        </div>
+
+        <div class="donut-wrap">
+
+            <div
+                class="donut"
+                id="donut">
+
+                <div class="donut-inner">
+
+                    <strong id="donutTotal">
+                        0
+                    </strong>
+
+                    <small>
+                        Total
+                    </small>
+
                 </div>
 
-                <div class="kpi-value" id="closedCount">
-                    0
+            </div>
+
+
+            <div class="legend">
+
+                <div class="legend-item">
+
+                    <span class="dot dot1"></span>
+
+                    Critical
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span class="dot dot2"></span>
+
+                    High
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span class="dot dot3"></span>
+
+                    Medium
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span class="dot dot4"></span>
+
+                    Low
+
                 </div>
 
             </div>
 
         </div>
 
+    </div>
 
-        <!-- FILTERS -->
+</div>
 
-        <div class="filter-card">
 
-            <div class="filter-title">
+<!-- TABLE -->
 
-                <h3>🔎 البحث والفلاتر</h3>
+<div class="card table-card">
 
-                <button class="clear-btn" onclick="clearFilters()">
-                    مسح الفلاتر
-                </button>
+    <div class="table-head">
 
-            </div>
+        <h3>
+            📋 CAPA Records
+        </h3>
 
+        <span
+            class="result-count"
+            id="resultCount">
 
-            <div class="filters">
+            0 records
 
-                <div class="filter">
+        </span>
 
-                    <label>بحث</label>
+    </div>
 
-                    <input
-                        type="text"
-                        id="search"
-                        placeholder="Code / Observation..."
-                        oninput="renderTable()"
-                    >
 
-                </div>
+    <div class="table-wrapper">
 
+        <table>
 
-                <div class="filter">
+            <thead>
 
-                    <label>Governorate</label>
+                <tr>
 
-                    <select id="governorate" onchange="renderTable()">
+                    <th>
+                        Code
+                    </th>
 
-                        <option value="">الكل</option>
+                    <th>
+                        Area Name
+                    </th>
 
-                        <option>Cairo</option>
+                    <th>
+                        Governorate
+                    </th>
 
-                        <option>Giza</option>
+                    <th>
+                        City
+                    </th>
 
-                        <option>Alexandria</option>
+                    <th>
+                        Site Name
+                    </th>
 
-                    </select>
+                    <th>
+                        Date
+                    </th>
 
-                </div>
+                    <th>
+                        Owner
+                    </th>
 
+                    <th>
+                        Observation
+                    </th>
 
-                <div class="filter">
+                    <th>
+                        Hazard Type
+                    </th>
 
-                    <label>Site</label>
+                    <th>
+                        Risk
+                    </th>
 
-                    <select id="site" onchange="renderTable()">
+                    <th>
+                        Status
+                    </th>
 
-                        <option value="">الكل</option>
+                    <th>
+                        Due Date
+                    </th>
 
-                        <option>Laboratory</option>
+                </tr>
 
-                        <option>Head Office</option>
+            </thead>
 
-                        <option>Warehouse</option>
 
-                    </select>
+            <tbody id="capaTable">
 
-                </div>
+            </tbody>
 
+        </table>
 
-                <div class="filter">
+    </div>
 
-                    <label>Risk Severity</label>
+</div>
 
-                    <select id="risk" onchange="renderTable()">
 
-                        <option value="">الكل</option>
-
-                        <option>Critical</option>
-
-                        <option>High</option>
-
-                        <option>Medium</option>
-
-                        <option>Low</option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="filter">
-
-                    <label>Status</label>
-
-                    <select id="status" onchange="renderTable()">
-
-                        <option value="">الكل</option>
-
-                        <option>Open</option>
-
-                        <option>In Progress</option>
-
-                        <option>Closed</option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="filter">
-
-                    <label>من تاريخ</label>
-
-                    <input
-                        type="date"
-                        id="fromDate"
-                        onchange="renderTable()"
-                    >
-
-                </div>
-
-
-                <div class="filter">
-
-                    <label>إلى تاريخ</label>
-
-                    <input
-                        type="date"
-                        id="toDate"
-                        onchange="renderTable()"
-                    >
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- TABLE -->
-
-        <div class="table-card">
-
-            <div class="table-head">
-
-                <h3>📋 CAPA Records</h3>
-
-                <span class="result-count" id="resultCount">
-                    0 records
-                </span>
-
-            </div>
-
-
-            <div class="table-wrapper">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>Code</th>
-
-                            <th>Area Name</th>
-
-                            <th>Governorate</th>
-
-                            <th>City</th>
-
-                            <th>Site Name</th>
-
-                            <th>Date</th>
-
-                            <th>Owner</th>
-
-                            <th>Observation</th>
-
-                            <th>Hazard Type</th>
-
-                            <th>Risk</th>
-
-                            <th>Status</th>
-
-                            <th>Due Date</th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody id="capaTable">
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-    </section>
+</section>
 
 </main>
 
 
 <!-- DETAILS MODAL -->
 
-<div class="modal" id="modal">
+<div
+    class="modal"
+    id="modal">
 
     <div class="modal-box">
 
@@ -901,14 +1408,20 @@ tr:hover td{
                 CAPA Details
             </h2>
 
-            <button class="close" onclick="closeModal()">
+            <button
+                class="close"
+                onclick="closeModal()">
+
                 ×
+
             </button>
 
         </div>
 
 
-        <div class="details" id="details">
+        <div
+            class="details"
+            id="details">
 
         </div>
 
@@ -921,238 +1434,296 @@ tr:hover td{
 
 /* =========================================================
    DEMO DATA
-   سيتم استبدالها لاحقًا ببيانات Excel الحقيقية
+   سيتم لاحقًا استبدالها بمصدر البيانات الآمن
 ========================================================= */
 
 const capaData = [
 
-{
-    code:"CAPA-001",
-    area:"Laboratory",
-    governorate:"Cairo",
-    city:"Cairo",
-    site:"Laboratory",
-    license:"Medical Laboratory",
-    date:"2026-01-15",
-    owner:"HSE",
-    observation:"Emergency exit partially obstructed.",
-    safety:"Housekeeping",
-    hazard:"Fire Safety",
-    hazardDetails:"Obstruction near emergency exit.",
-    action:"Remove obstruction and maintain clear access.",
-    risk:"High",
-    status:"Open",
-    dueDate:"2026-09-20"
-},
+    {
+        code:"CAPA-001",
+        area:"Laboratory",
+        governorate:"Cairo",
+        city:"Cairo",
+        site:"Laboratory",
+        responsibility:"HSE",
+        license:"Medical Laboratory",
+        date:"2026-01-15",
+        owner:"HSE",
+        observation:"Emergency exit partially obstructed.",
+        safety:"Housekeeping",
+        hazard:"Fire Safety",
+        hazardDetails:"Obstruction near emergency exit.",
+        action:"Remove obstruction and maintain clear access.",
+        risk:"High",
+        status:"Open",
+        dueDate:"2026-09-20"
+    },
 
-{
-    code:"CAPA-002",
-    area:"Engineering",
-    governorate:"Giza",
-    city:"Giza",
-    site:"Head Office",
-    license:"Office",
-    date:"2026-02-10",
-    owner:"Engineering",
-    observation:"Electrical panel requires identification.",
-    safety:"Electrical Safety",
-    hazard:"Electrical",
-    hazardDetails:"Panel labels missing.",
-    action:"Install proper identification labels.",
-    risk:"Medium",
-    status:"Closed",
-    dueDate:"2026-08-20"
-},
 
-{
-    code:"CAPA-003",
-    area:"Warehouse",
-    governorate:"Alexandria",
-    city:"Alexandria",
-    site:"Warehouse",
-    license:"Warehouse",
-    date:"2026-03-05",
-    owner:"Warehouse",
-    observation:"Chemical containers require improved segregation.",
-    safety:"Chemical Safety",
-    hazard:"Chemical",
-    hazardDetails:"Incompatible chemicals stored close together.",
-    action:"Segregate chemicals according to compatibility.",
-    risk:"Critical",
-    status:"In Progress",
-    dueDate:"2026-09-15"
-},
+    {
+        code:"CAPA-002",
+        area:"Engineering",
+        governorate:"Giza",
+        city:"Giza",
+        site:"Head Office",
+        responsibility:"Engineering",
+        license:"Office",
+        date:"2026-02-10",
+        owner:"Engineering",
+        observation:"Electrical panel requires identification.",
+        safety:"Electrical Safety",
+        hazard:"Electrical",
+        hazardDetails:"Panel labels missing.",
+        action:"Install proper identification labels.",
+        risk:"Medium",
+        status:"Closed",
+        dueDate:"2026-08-20"
+    },
 
-{
-    code:"CAPA-004",
-    area:"Laboratory",
-    governorate:"Cairo",
-    city:"Cairo",
-    site:"Laboratory",
-    license:"Medical Laboratory",
-    date:"2026-04-12",
-    owner:"Laboratory Manager",
-    observation:"PPE signage needs improvement.",
-    safety:"PPE",
-    hazard:"PPE",
-    hazardDetails:"Required PPE not clearly displayed.",
-    action:"Install updated PPE requirement signage.",
-    risk:"Low",
-    status:"Closed",
-    dueDate:"2026-06-30"
-}
+
+    {
+        code:"CAPA-003",
+        area:"Warehouse",
+        governorate:"Alexandria",
+        city:"Alexandria",
+        site:"Warehouse",
+        responsibility:"Warehouse HSE",
+        license:"Warehouse",
+        date:"2026-03-05",
+        owner:"Warehouse",
+        observation:"Chemical containers require improved segregation.",
+        safety:"Chemical Safety",
+        hazard:"Chemical",
+        hazardDetails:"Incompatible chemicals stored close together.",
+        action:"Segregate chemicals according to compatibility.",
+        risk:"Critical",
+        status:"In Progress",
+        dueDate:"2026-09-15"
+    },
+
+
+    {
+        code:"CAPA-004",
+        area:"Laboratory",
+        governorate:"Cairo",
+        city:"Cairo",
+        site:"Laboratory",
+        responsibility:"Laboratory Manager",
+        license:"Medical Laboratory",
+        date:"2026-04-12",
+        owner:"Laboratory Manager",
+        observation:"PPE signage needs improvement.",
+        safety:"PPE",
+        hazard:"PPE",
+        hazardDetails:"Required PPE not clearly displayed.",
+        action:"Install updated PPE requirement signage.",
+        risk:"Low",
+        status:"Closed",
+        dueDate:"2026-06-30"
+    }
 
 ];
 
 
 /* =========================================================
-   RENDER
+   DATE
 ========================================================= */
 
-function renderTable(){
-
-    const search =
-        document.getElementById("search").value
-        .toLowerCase();
-
-    const governorate =
-        document.getElementById("governorate").value;
-
-    const site =
-        document.getElementById("site").value;
-
-    const risk =
-        document.getElementById("risk").value;
-
-    const status =
-        document.getElementById("status").value;
-
-    const fromDate =
-        document.getElementById("fromDate").value;
-
-    const toDate =
-        document.getElementById("toDate").value;
+const today =
+    new Date()
+    .toISOString()
+    .slice(0,10);
 
 
-    const filtered = capaData.filter(item => {
+function isOverdue(item){
 
-        const text =
-            Object.values(item)
-            .join(" ")
-            .toLowerCase();
-
-        if(search && !text.includes(search))
-            return false;
-
-        if(governorate && item.governorate !== governorate)
-            return false;
-
-        if(site && item.site !== site)
-            return false;
-
-        if(risk && item.risk !== risk)
-            return false;
-
-        if(status && item.status !== status)
-            return false;
-
-        if(fromDate && item.date < fromDate)
-            return false;
-
-        if(toDate && item.date > toDate)
-            return false;
-
-        return true;
-
-    });
-
-
-    updateKPIs(filtered);
-
-    document.getElementById("resultCount").textContent =
-        filtered.length + " records";
-
-
-    const table =
-        document.getElementById("capaTable");
-
-    table.innerHTML = "";
-
-
-    filtered.forEach((item,index) => {
-
-        const row =
-            document.createElement("tr");
-
-
-        row.innerHTML = `
-
-            <td>
-                <span class="code"
-                    onclick="showDetails(${capaData.indexOf(item)})">
-                    ${item.code}
-                </span>
-            </td>
-
-            <td>${item.area}</td>
-
-            <td>${item.governorate}</td>
-
-            <td>${item.city}</td>
-
-            <td>${item.site}</td>
-
-            <td>${item.date}</td>
-
-            <td>${item.owner}</td>
-
-            <td>${item.observation}</td>
-
-            <td>${item.hazard}</td>
-
-            <td>
-                ${riskBadge(item.risk)}
-            </td>
-
-            <td>
-                ${statusBadge(item.status)}
-            </td>
-
-            <td>${item.dueDate}</td>
-
-        `;
-
-
-        table.appendChild(row);
-
-    });
+    return (
+        item.status !== "Closed" &&
+        item.dueDate &&
+        item.dueDate < today
+    );
 
 }
 
 
 /* =========================================================
-   KPI
+   FILTER OPTIONS
 ========================================================= */
 
-function updateKPIs(data){
+function uniqueValues(key){
 
-    document.getElementById("totalCount").textContent =
-        data.length;
+    return [
+        ...new Set(
+            capaData
+                .map(x => x[key])
+                .filter(Boolean)
+        )
+    ].sort();
 
-    document.getElementById("criticalCount").textContent =
-        data.filter(x => x.risk === "Critical").length;
+}
 
-    document.getElementById("highCount").textContent =
-        data.filter(x => x.risk === "High").length;
 
-    document.getElementById("openCount").textContent =
-        data.filter(x => x.status === "Open").length;
+function fillSelect(id,key){
 
-    document.getElementById("progressCount").textContent =
-        data.filter(x => x.status === "In Progress").length;
+    const select =
+        document.getElementById(id);
 
-    document.getElementById("closedCount").textContent =
-        data.filter(x => x.status === "Closed").length;
+    const current =
+        select.value;
+
+    select.innerHTML =
+        '<option value="">الكل</option>';
+
+    uniqueValues(key).forEach(value => {
+
+        const option =
+            document.createElement("option");
+
+        option.value = value;
+
+        option.textContent = value;
+
+        select.appendChild(option);
+
+    });
+
+    if(uniqueValues(key).includes(current)){
+
+        select.value = current;
+
+    }
+
+}
+
+
+function initFilters(){
+
+    fillSelect("area","area");
+
+    fillSelect("governorate","governorate");
+
+    fillSelect("city","city");
+
+    fillSelect("site","site");
+
+    fillSelect("responsibility","responsibility");
+
+    fillSelect("owner","owner");
+
+    fillSelect("hazard","hazard");
+
+}
+
+
+/* =========================================================
+   GET FILTERED DATA
+========================================================= */
+
+function getFiltered(){
+
+    const search =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const filters = {
+
+        area:
+            document.getElementById("area").value,
+
+        governorate:
+            document.getElementById("governorate").value,
+
+        city:
+            document.getElementById("city").value,
+
+        site:
+            document.getElementById("site").value,
+
+        responsibility:
+            document.getElementById("responsibility").value,
+
+        owner:
+            document.getElementById("owner").value,
+
+        risk:
+            document.getElementById("risk").value,
+
+        status:
+            document.getElementById("status").value,
+
+        hazard:
+            document.getElementById("hazard").value
+
+    };
+
+
+    const from =
+        document.getElementById("fromDate").value;
+
+
+    const to =
+        document.getElementById("toDate").value;
+
+
+    return capaData.filter(item => {
+
+        if(
+            search &&
+            !Object
+                .values(item)
+                .join(" ")
+                .toLowerCase()
+                .includes(search)
+        ){
+
+            return false;
+
+        }
+
+
+        for(
+            const key of Object.keys(filters)
+        ){
+
+            if(
+                filters[key] &&
+                item[key] !== filters[key]
+            ){
+
+                return false;
+
+            }
+
+        }
+
+
+        if(
+            from &&
+            item.date < from
+        ){
+
+            return false;
+
+        }
+
+
+        if(
+            to &&
+            item.date > to
+        ){
+
+            return false;
+
+        }
+
+
+        return true;
+
+    });
 
 }
 
@@ -1165,15 +1736,16 @@ function riskBadge(risk){
 
     const classes = {
 
-        Critical:"critical",
-        High:"high-badge",
-        Medium:"medium-badge",
-        Low:"low-badge"
+        Critical:"r-critical",
+        High:"r-high",
+        Medium:"r-medium",
+        Low:"r-low"
 
     };
 
+
     return `
-        <span class="badge ${classes[risk]}">
+        <span class="badge ${classes[risk] || ""}">
             ${risk}
         </span>
     `;
@@ -1181,21 +1753,423 @@ function riskBadge(risk){
 }
 
 
-function statusBadge(status){
+function statusBadge(status,overdue=false){
+
+    if(overdue){
+
+        return `
+            <span class="badge s-overdue">
+                Overdue
+            </span>
+        `;
+
+    }
+
 
     const classes = {
 
-        Open:"open-badge",
-        "In Progress":"progress-badge",
-        Closed:"closed-badge"
+        Open:"s-open",
+        "In Progress":"s-progress",
+        Closed:"s-closed"
 
     };
 
+
     return `
-        <span class="badge ${classes[status]}">
+        <span class="badge ${classes[status] || ""}">
             ${status}
         </span>
     `;
+
+}
+
+
+/* =========================================================
+   KPI
+========================================================= */
+
+function updateKPIs(data){
+
+    const riskCount =
+        risk =>
+        data.filter(
+            x => x.risk === risk
+        ).length;
+
+
+    const statusCount =
+        status =>
+        data.filter(
+            x => x.status === status
+        ).length;
+
+
+    document
+        .getElementById("totalCount")
+        .textContent =
+        data.length.toLocaleString();
+
+
+    document
+        .getElementById("criticalCount")
+        .textContent =
+        riskCount("Critical");
+
+
+    document
+        .getElementById("highCount")
+        .textContent =
+        riskCount("High");
+
+
+    document
+        .getElementById("mediumCount")
+        .textContent =
+        riskCount("Medium");
+
+
+    document
+        .getElementById("lowCount")
+        .textContent =
+        riskCount("Low");
+
+
+    document
+        .getElementById("openCount")
+        .textContent =
+        statusCount("Open");
+
+
+    document
+        .getElementById("progressCount")
+        .textContent =
+        statusCount("In Progress");
+
+
+    document
+        .getElementById("closedCount")
+        .textContent =
+        statusCount("Closed");
+
+
+    document
+        .getElementById("overdueCount")
+        .textContent =
+        data.filter(isOverdue).length;
+
+}
+
+
+/* =========================================================
+   CHARTS
+========================================================= */
+
+function updateCharts(data){
+
+    const risks =
+        [
+            "Critical",
+            "High",
+            "Medium",
+            "Low"
+        ];
+
+
+    const colors =
+        [
+            "#c0392b",
+            "#d66a25",
+            "#9c7a00",
+            "#43834a"
+        ];
+
+
+    const values =
+        risks.map(
+            risk =>
+            data.filter(
+                x => x.risk === risk
+            ).length
+        );
+
+
+    const max =
+        Math.max(...values,1);
+
+
+    document
+        .getElementById("riskChart")
+        .innerHTML =
+
+        risks.map(
+            (risk,index) => `
+
+                <div class="bar-item">
+
+                    <div class="bar-value">
+                        ${values[index]}
+                    </div>
+
+                    <div
+                        class="bar"
+                        style="
+                            height:${Math.max(
+                                5,
+                                (values[index] / max) * 140
+                            )}px;
+                            background:${colors[index]}
+                        ">
+                    </div>
+
+                    <div class="bar-label">
+                        ${risk}
+                    </div>
+
+                </div>
+
+            `
+        ).join("");
+
+
+    const statuses =
+        [
+            "Open",
+            "In Progress",
+            "Closed"
+        ];
+
+
+    const statusValues =
+        statuses.map(
+            status =>
+            data.filter(
+                x => x.status === status
+            ).length
+        );
+
+
+    const statusMax =
+        Math.max(...statusValues,1);
+
+
+    document
+        .getElementById("statusChart")
+        .innerHTML =
+
+        statuses.map(
+            (status,index) => `
+
+                <div class="status-row">
+
+                    <div class="status-name">
+                        ${status}
+                    </div>
+
+                    <div class="status-track">
+
+                        <div
+                            class="status-fill"
+                            style="
+                                width:${
+                                    (statusValues[index] /
+                                    statusMax) * 100
+                                }%
+                            ">
+                        </div>
+
+                    </div>
+
+                    <div class="status-num">
+                        ${statusValues[index]}
+                    </div>
+
+                </div>
+
+            `
+        ).join("");
+
+
+    const total =
+        data.length || 1;
+
+
+    const critical =
+        data.filter(
+            x => x.risk === "Critical"
+        ).length / total * 100;
+
+
+    const high =
+        data.filter(
+            x => x.risk === "High"
+        ).length / total * 100;
+
+
+    const medium =
+        data.filter(
+            x => x.risk === "Medium"
+        ).length / total * 100;
+
+
+    document
+        .getElementById("donut")
+        .style.background =
+
+        `
+        conic-gradient(
+            #c0392b 0 ${critical}%,
+            #d66a25 ${critical}% ${critical + high}%,
+            #9c7a00 ${critical + high}%
+            ${critical + high + medium}%,
+            #43834a
+            ${critical + high + medium}% 100%
+        )
+        `;
+
+
+    document
+        .getElementById("donutTotal")
+        .textContent =
+        data.length;
+
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+function render(){
+
+    const data =
+        getFiltered();
+
+
+    updateKPIs(data);
+
+    updateCharts(data);
+
+
+    document
+        .getElementById("resultCount")
+        .textContent =
+        `${data.length.toLocaleString()} records`;
+
+
+    const tbody =
+        document.getElementById("capaTable");
+
+
+    if(!data.length){
+
+        tbody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="12"
+                    class="empty">
+
+                    لا توجد سجلات مطابقة
+                    للفلاتر الحالية
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    tbody.innerHTML =
+        data.map(item => {
+
+            const index =
+                capaData.indexOf(item);
+
+
+            return `
+
+                <tr>
+
+                    <td>
+
+                        <span
+                            class="code"
+                            onclick="showDetails(${index})">
+
+                            ${item.code}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+                        ${item.area}
+                    </td>
+
+
+                    <td>
+                        ${item.governorate}
+                    </td>
+
+
+                    <td>
+                        ${item.city}
+                    </td>
+
+
+                    <td>
+                        ${item.site}
+                    </td>
+
+
+                    <td>
+                        ${item.date}
+                    </td>
+
+
+                    <td>
+                        ${item.owner}
+                    </td>
+
+
+                    <td>
+                        ${item.observation}
+                    </td>
+
+
+                    <td>
+                        ${item.hazard}
+                    </td>
+
+
+                    <td>
+                        ${riskBadge(item.risk)}
+                    </td>
+
+
+                    <td>
+                        ${statusBadge(
+                            item.status,
+                            isOverdue(item)
+                        )}
+                    </td>
+
+
+                    <td>
+                        ${item.dueDate}
+                    </td>
+
+                </tr>
+
+            `;
+
+        }).join("");
 
 }
 
@@ -1206,107 +2180,99 @@ function statusBadge(status){
 
 function showDetails(index){
 
-    const item = capaData[index];
-
-    document.getElementById("modalTitle").textContent =
-        item.code + " — CAPA Details";
+    const item =
+        capaData[index];
 
 
-    document.getElementById("details").innerHTML = `
-
-        <div class="detail">
-            <div class="detail-label">Code</div>
-            <div class="detail-value">${item.code}</div>
-        </div>
-
-        <div class="detail">
-            <div class="detail-label">Area Name</div>
-            <div class="detail-value">${item.area}</div>
-        </div>
-
-        <div class="detail">
-            <div class="detail-label">Governorate</div>
-            <div class="detail-value">${item.governorate}</div>
-        </div>
-
-        <div class="detail">
-            <div class="detail-label">City</div>
-            <div class="detail-value">${item.city}</div>
-        </div>
-
-        <div class="detail">
-            <div class="detail-label">Site Name</div>
-            <div class="detail-value">${item.site}</div>
-        </div>
-
-        <div class="detail">
-            <div class="detail-label">HSE Responsibility</div>
-            <div class="detail-value">${item.owner}</div>
-        </div>
-
-        <div class="detail">
-            <div class="detail-label">Site License</div>
-            <div class="detail-value">${item.license}</div>
-        </div>
-
-        <div class="detail">
-            <div class="detail-label">Date</div>
-            <div class="detail-value">${item.date}</div>
-        </div>
-
-        <div class="detail">
-            <div class="detail-label">Owner</div>
-            <div class="detail-value">${item.owner}</div>
-        </div>
-
-        <div class="detail full">
-            <div class="detail-label">Observation</div>
-            <div class="detail-value">${item.observation}</div>
-        </div>
-
-        <div class="detail">
-            <div class="detail-label">Safety Observations</div>
-            <div class="detail-value">${item.safety}</div>
-        </div>
-
-        <div class="detail">
-            <div class="detail-label">Hazards Types</div>
-            <div class="detail-value">${item.hazard}</div>
-        </div>
-
-        <div class="detail full">
-            <div class="detail-label">Hazard Details</div>
-            <div class="detail-value">${item.hazardDetails}</div>
-        </div>
-
-        <div class="detail full">
-            <div class="detail-label">Corrective Action</div>
-            <div class="detail-value">${item.action}</div>
-        </div>
-
-        <div class="detail">
-            <div class="detail-label">Risk Severity</div>
-            <div class="detail-value">
-                ${riskBadge(item.risk)}
-            </div>
-        </div>
-
-        <div class="detail">
-            <div class="detail-label">Status</div>
-            <div class="detail-value">
-                ${statusBadge(item.status)}
-            </div>
-        </div>
-
-        <div class="detail">
-            <div class="detail-label">Due Date</div>
-            <div class="detail-value">${item.dueDate}</div>
-        </div>
-
-    `;
+    document
+        .getElementById("modalTitle")
+        .textContent =
+        `${item.code} — CAPA Details`;
 
 
-    document.getElementById("modal").style.display =
+    const fields = [
+
+        ["Code",item.code],
+
+        ["Area Name",item.area],
+
+        ["Governorate",item.governorate],
+
+        ["City",item.city],
+
+        ["Site Name",item.site],
+
+        ["HSE Responsibility",item.responsibility],
+
+        ["Site License",item.license],
+
+        ["Date",item.date],
+
+        ["Owner",item.owner],
+
+        ["Safety Observations",item.safety],
+
+        ["Hazards Types",item.hazard],
+
+        ["Risk Severity",riskBadge(item.risk)],
+
+        [
+            "Status",
+            statusBadge(
+                item.status,
+                isOverdue(item)
+            )
+        ],
+
+        ["Due Date",item.dueDate],
+
+        ["Observation",item.observation],
+
+        ["Hazard Details",item.hazardDetails],
+
+        ["Corrective Action",item.action]
+
+    ];
+
+
+    document
+        .getElementById("details")
+        .innerHTML =
+
+        fields.map(
+            ([label,value]) => `
+
+                <div
+                    class="
+                        detail
+                        ${
+                            [
+                                "Observation",
+                                "Hazard Details",
+                                "Corrective Action"
+                            ].includes(label)
+                            ? "full"
+                            : ""
+                        }
+                    ">
+
+                    <div class="detail-label">
+                        ${label}
+                    </div>
+
+                    <div class="detail-value">
+                        ${value ?? "-"}
+                    </div>
+
+                </div>
+
+            `
+        ).join("");
+
+
+    document
+        .getElementById("modal")
+        .style.display =
         "flex";
 
 }
@@ -1314,38 +2280,87 @@ function showDetails(index){
 
 function closeModal(){
 
-    document.getElementById("modal").style.display =
+    document
+        .getElementById("modal")
+        .style.display =
         "none";
 
 }
 
 
+/* =========================================================
+   CLEAR FILTERS
+========================================================= */
+
 function clearFilters(){
 
-    document.getElementById("search").value = "";
+    document
+        .getElementById("search")
+        .value = "";
 
-    document.getElementById("governorate").value = "";
 
-    document.getElementById("site").value = "";
+    document
+        .getElementById("fromDate")
+        .value = "";
 
-    document.getElementById("risk").value = "";
 
-    document.getElementById("status").value = "";
+    document
+        .getElementById("toDate")
+        .value = "";
 
-    document.getElementById("fromDate").value = "";
 
-    document.getElementById("toDate").value = "";
+    [
+        "area",
+        "governorate",
+        "city",
+        "site",
+        "responsibility",
+        "owner",
+        "risk",
+        "status",
+        "hazard"
+    ].forEach(
+        id =>
+        document
+            .getElementById(id)
+            .value = ""
+    );
 
-    renderTable();
+
+    render();
 
 }
+
+
+/* =========================================================
+   CLOSE MODAL BY CLICKING OUTSIDE
+========================================================= */
+
+document
+    .getElementById("modal")
+    .addEventListener(
+        "click",
+        event => {
+
+            if(
+                event.target.id === "modal"
+            ){
+
+                closeModal();
+
+            }
+
+        }
+    );
 
 
 /* =========================================================
    START
 ========================================================= */
 
-renderTable();
+initFilters();
+
+render();
 
 </script>
 
