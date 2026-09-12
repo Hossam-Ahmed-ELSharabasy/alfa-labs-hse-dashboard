@@ -7,195 +7,32 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <style>
 :root{--navy:#071a33;--navy2:#0c2a50;--blue:#1266d6;--red:#d92d3a;--green:#16a36a;--orange:#f59e0b;--cyan:#0891b2;--bg:#f3f6fa;--text:#162235;--muted:#6b778c;--card:#fff;--border:#e5eaf1}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,"Segoe UI",Tahoma,sans-serif;background:var(--bg);color:var(--text)}
-.sidebar{position:fixed;left:0;top:0;bottom:0;width:238px;background:linear-gradient(180deg,var(--navy),#0a2344);color:#fff;z-index:50;padding:18px 12px;overflow:auto}
-.brand{display:flex;align-items:center;gap:10px;padding:4px 10px 20px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:14px}
-.brand img{width:45px;height:45px;object-fit:contain;background:#fff;border-radius:9px;padding:3px}.brand b{font-size:15px}.brand span{display:block;color:#b8c8dc;font-size:11px;margin-top:3px}
-.nav a{display:flex;align-items:center;gap:10px;color:#d9e4f2;text-decoration:none;padding:11px 12px;border-radius:9px;margin:3px 0;font-size:14px}.nav a:hover,.nav a.active{background:#123b6b;color:#fff}.nav .ico{width:22px;text-align:center}
-.main{margin-left:238px;min-height:100vh}.topbar{height:76px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:30}
-.title h1{margin:0;font-size:24px;color:var(--navy)}.title p{margin:5px 0 0;color:var(--muted);font-size:12px}
-.user{display:flex;align-items:center;gap:10px}.avatar{width:38px;height:38px;border-radius:50%;background:#e9eef6;display:grid;place-items:center;font-weight:bold;color:var(--navy)}
-.menu{display:none;border:0;background:var(--navy);color:#fff;border-radius:8px;padding:8px 11px;font-size:20px}
-.content{padding:24px;max-width:1700px;margin:auto}.hero{background:linear-gradient(135deg,var(--navy),#104d8e);color:#fff;border-radius:15px;padding:24px 26px;margin-bottom:18px;box-shadow:0 8px 24px rgba(7,26,51,.12)}.hero h2{margin:0 0 7px;font-size:25px}.hero p{margin:0;color:#dbe9f8}
-.filters,.card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 4px 15px rgba(20,40,70,.05)}.filters{padding:18px;margin-bottom:18px}.filters h3{margin:0 0 14px;color:var(--navy);font-size:16px}.filter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.field label{display:block;font-size:12px;font-weight:700;color:#4c5a6e;margin-bottom:6px}.field select,.field input{width:100%;height:42px;border:1px solid #d6deea;border-radius:8px;padding:0 11px;background:#fff;color:#25344a;font-size:13px}.actions{display:flex;gap:8px;align-items:end}.btn{height:42px;border:0;border-radius:8px;padding:0 18px;font-weight:700;cursor:pointer}.btn-primary{background:var(--blue);color:#fff}.btn-light{background:#eef2f7;color:#27364c}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Segoe UI",Tahoma,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+.sidebar{position:fixed!important;left:0!important;right:auto!important;top:0!important;width:230px;height:100vh;background:linear-gradient(180deg,#082b52,#061f3b);color:#fff;z-index:1001;padding:18px 12px;overflow-y:auto;direction:rtl;box-shadow:2px 0 12px rgba(10,40,70,.1)}
+.brand{text-align:center;padding:2px 0 20px;border-bottom:1px solid rgba(255,255,255,.14);margin-bottom:16px}.brand img{width:105px;height:78px;object-fit:contain;background:#fff;border-radius:9px;padding:6px;display:block;margin:0 auto 10px}.brand b{display:block;font-size:27px;color:#fff;margin:0 0 6px}.brand span{display:block;font-size:13px;color:#c4d3e5;margin:0}
+.nav{margin-top:18px}.nav a{display:flex;align-items:center;gap:12px;color:#d9e6f4;text-decoration:none;padding:13px 12px;border-radius:9px;margin:4px 0;font-size:16px;line-height:1.35}.nav a:hover,.nav a.active{background:#1769c2;color:#fff;box-shadow:0 5px 14px rgba(0,0,0,.12)}.nav .ico{width:27px;min-width:27px;text-align:center;font-size:19px}
+.main{margin-left:230px;min-height:100vh}.topbar{height:76px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:30}.title h1{margin:0;font-size:24px;color:var(--navy)}.title p{margin:5px 0 0;color:var(--muted);font-size:12px}.user{display:flex;align-items:center;gap:10px}.avatar{width:38px;height:38px;border-radius:50%;background:#e9eef6;display:grid;place-items:center;font-weight:bold;color:var(--navy)}.menu{display:none;border:0;background:var(--navy);color:#fff;border-radius:8px;padding:8px 11px;font-size:20px}
+.content{padding:24px;max-width:1700px;margin:auto}.hero{background:linear-gradient(135deg,var(--navy),#104d8e);color:#fff;border-radius:15px;padding:24px 26px;margin-bottom:18px;box-shadow:0 8px 24px rgba(7,26,51,.12)}.hero h2{margin:0 0 7px;font-size:25px}.hero p{margin:0;color:#dbe9f8}.filters,.card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 4px 15px rgba(20,40,70,.05)}.filters{padding:18px;margin-bottom:18px}.filters h3{margin:0 0 14px;color:var(--navy);font-size:16px}.filter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.field label{display:block;font-size:12px;font-weight:700;color:#4c5a6e;margin-bottom:6px}.field select,.field input{width:100%;height:42px;border:1px solid #d6deea;border-radius:8px;padding:0 11px;background:#fff;color:#25344a;font-size:13px}.actions{display:flex;gap:8px;align-items:end}.btn{height:42px;border:0;border-radius:8px;padding:0 18px;font-weight:700;cursor:pointer}.btn-primary{background:var(--blue);color:#fff}.btn-light{background:#eef2f7;color:#27364c}
 .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:18px}.kpi{padding:17px;border-radius:13px;color:#fff;min-height:112px;box-shadow:0 6px 16px rgba(20,40,70,.09)}.kpi small{opacity:.88;font-size:12px}.kpi strong{display:block;font-size:28px;margin-top:9px}.k1{background:var(--navy)}.k2{background:var(--blue)}.k3{background:var(--green)}.k4{background:var(--orange)}.k5{background:#7c3aed}.k6{background:#0891b2}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:18px}.chart-card{padding:18px;min-height:350px}.chart-card h3{margin:0 0 13px;font-size:15px;color:var(--navy)}.chart-wrap{height:285px;position:relative}.wide{grid-column:1/-1}
-.table-card{padding:18px}.table-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.table-head h3{margin:0;font-size:16px;color:var(--navy)}.count{font-size:12px;color:var(--muted)}.table-scroll{overflow:auto;border:1px solid var(--border);border-radius:10px}table{width:100%;border-collapse:collapse;min-width:1250px;font-size:12px}th{background:#f1f5f9;color:#33445a;text-align:left;padding:11px 9px;position:sticky;top:0}td{padding:10px 9px;border-top:1px solid var(--border);vertical-align:top}tr:hover td{background:#f8fafc}
-.footer{margin-top:24px;background:var(--navy);color:#fff;text-align:center;padding:18px;font-size:12px;line-height:1.8}.footer .ar{font-weight:700}.footer .eng{font-weight:700}.footer .tag{color:#b9cbe0}
-.overlay{display:none}
+.table-card{padding:18px;overflow:hidden}.table-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.table-head h3{margin:0;font-size:16px;color:var(--navy)}.count{font-size:12px;color:var(--muted)}.table-scroll{overflow:auto;max-height:560px;border:1px solid var(--border);border-radius:10px;-webkit-overflow-scrolling:touch}table{width:100%;border-collapse:collapse;min-width:1250px;font-size:12px}th{background:#f1f5f9;color:#33445a;text-align:left;padding:11px 9px;position:sticky;top:0;z-index:2;white-space:nowrap}td{padding:10px 9px;border-top:1px solid var(--border);vertical-align:top}tr:hover td{background:#f8fafc}
+.footer{margin-top:24px;background:var(--navy);color:#fff;text-align:center;padding:18px;font-size:12px;line-height:1.8}.footer .ar{font-weight:700}.footer .eng{font-weight:700}.footer .tag{color:#b9cbe0}.overlay{display:none}
 @media(max-width:1200px){.kpis{grid-template-columns:repeat(3,1fr)}.filter-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:800px){.sidebar{transform:translateX(-100%);transition:.25s;width:260px}.sidebar.open{transform:translateX(0)}.main{margin-left:0}.menu{display:block}.topbar{height:68px;padding:0 14px}.title h1{font-size:19px}.title p{font-size:10px}.content{padding:14px}.hero{padding:19px}.hero h2{font-size:21px}.filter-grid{grid-template-columns:1fr}.actions{grid-column:1;display:grid;grid-template-columns:1fr 1fr}.kpis{grid-template-columns:repeat(2,1fr);gap:9px}.kpi{min-height:95px;padding:13px}.kpi strong{font-size:23px}.grid{grid-template-columns:1fr;gap:12px}.wide{grid-column:auto}.chart-card{min-height:330px}.chart-wrap{height:270px}.overlay.show{display:block;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:40}}
+@media(max-width:800px){.sidebar{position:fixed!important;left:0!important;right:auto!important;top:0!important;width:285px!important;max-width:84vw;height:100vh!important;transform:translateX(-105%);transition:transform .25s ease;z-index:1001!important;background:#082b52!important;box-shadow:8px 0 25px rgba(0,0,0,.25)}.sidebar.open{transform:translateX(0)}.main{margin-left:0!important;margin-right:0!important;width:100%}.menu{display:block}.topbar{height:68px;padding:0 14px}.title h1{font-size:19px}.title p{font-size:10px}.content{padding:14px}.hero{padding:19px}.hero h2{font-size:21px}.filter-grid{grid-template-columns:1fr}.actions{grid-column:1;display:grid;grid-template-columns:1fr 1fr}.kpis{grid-template-columns:repeat(2,1fr);gap:9px}.kpi{min-height:95px;padding:13px}.kpi strong{font-size:23px}.grid{grid-template-columns:1fr;gap:12px}.wide{grid-column:auto}.chart-card{min-height:330px}.chart-wrap{height:270px}.table-card{padding:12px}.table-scroll{max-height:520px;overflow:auto;-webkit-overflow-scrolling:touch}.table-scroll table{min-width:1250px}.overlay.show{display:block;position:fixed;inset:0;background:rgba(4,22,40,.55);z-index:1000}}
 @media(max-width:430px){.kpis{grid-template-columns:1fr 1fr}.kpi strong{font-size:20px}.hero p{font-size:12px}.table-card{padding:12px}}
 </style>
 </head>
 <body>
-<aside class="sidebar" id="sidebar">
-  <div class="brand">
-    <img src="https://alfa-labs-hse.github.io/alfa-labs-hse-dashboard/assets/alfa-logo.png" alt="Alfa Labs">
-    <div><b>ALFA LABS</b><span>HSE Management System</span></div>
-  </div>
-  <nav class="nav">
-    <a href="index.html"><span class="ico">⌂</span>Home</a>
-    <a href="capa.html"><span class="ico">✓</span>CAPA</a>
-    <a class="active" href="training.html"><span class="ico">🎓</span>Training</a>
-    <a href="#"><span class="ico">⚠</span>Safety Observations</a>
-    <a href="#"><span class="ico">◉</span>Incidents</a>
-    <a href="#"><span class="ico">!</span>Near Miss</a>
-    <a href="#"><span class="ico">☑</span>Inspections</a>
-    <a href="#"><span class="ico">🔥</span>Fire Safety</a>
-    <a href="#"><span class="ico">✚</span>First Aid</a>
-    <a href="#"><span class="ico">▥</span>Analytics</a>
-    <a href="#"><span class="ico">▤</span>Reports</a>
-    <a href="#"><span class="ico">⚙</span>Settings</a>
-  </nav>
-</aside>
-<div class="overlay" id="overlay"></div>
-
-<main class="main">
-<header class="topbar">
-  <div style="display:flex;align-items:center;gap:12px">
-    <button class="menu" id="menu">☰</button>
-    <div class="title"><h1>Training Management</h1><p>Training Record &amp; HSE Training Analytics</p></div>
-  </div>
-  <div class="user"><div class="avatar">H</div><div><b style="font-size:13px">HSE Manager</b><div style="font-size:11px;color:#78869a">Alfa Labs</div></div></div>
-</header>
-
-<section class="content">
-  <div class="hero">
-    <h2>Training Management &amp; Analytics</h2>
-    <p>Analyze the complete Training Record using Year, Month, From Date and To Date filters.</p>
-  </div>
-
-  <section class="filters">
-    <h3>Time Filters</h3>
-    <div class="filter-grid">
-      <div class="field"><label>Year</label><select id="year"><option value="">All Years</option></select></div>
-      <div class="field"><label>Month</label><select id="month"><option value="">All Months</option><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select></div>
-      <div class="field"><label>From Date</label><input id="from" type="date"></div>
-      <div class="field"><label>To Date</label><input id="to" type="date"></div>
-      <div class="actions"><button class="btn btn-primary" id="apply">Apply Filters</button><button class="btn btn-light" id="reset">Reset</button></div>
-    </div>
-  </section>
-
-  <section class="kpis">
-    <div class="kpi k1"><small>Training Records</small><strong id="kRecords">—</strong></div>
-    <div class="kpi k2"><small>Employees Trained</small><strong id="kEmployees">—</strong></div>
-    <div class="kpi k3"><small>Training Hours</small><strong id="kHours">—</strong></div>
-    <div class="kpi k4"><small>Departments</small><strong id="kDepartments">—</strong></div>
-    <div class="kpi k5"><small>Training Programs</small><strong id="kPrograms">—</strong></div>
-    <div class="kpi k6"><small>Training Providers</small><strong id="kProviders">—</strong></div>
-  </section>
-
-  <section class="grid">
-    <div class="card chart-card wide"><h3>Training Trend</h3><div class="chart-wrap"><canvas id="trend"></canvas></div></div>
-    <div class="card chart-card"><h3>Employee Status</h3><div class="chart-wrap"><canvas id="status"></canvas></div></div>
-    <div class="card chart-card"><h3>Training Type</h3><div class="chart-wrap"><canvas id="type"></canvas></div></div>
-    <div class="card chart-card"><h3>Department</h3><div class="chart-wrap"><canvas id="department"></canvas></div></div>
-    <div class="card chart-card"><h3>Job Title</h3><div class="chart-wrap"><canvas id="job"></canvas></div></div>
-    <div class="card chart-card"><h3>Training Program</h3><div class="chart-wrap"><canvas id="program"></canvas></div></div>
-    <div class="card chart-card"><h3>Training Provider</h3><div class="chart-wrap"><canvas id="provider"></canvas></div></div>
-    <div class="card chart-card"><h3>Site</h3><div class="chart-wrap"><canvas id="site"></canvas></div></div>
-    <div class="card chart-card"><h3>Governorate</h3><div class="chart-wrap"><canvas id="gov"></canvas></div></div>
-    <div class="card chart-card"><h3>City</h3><div class="chart-wrap"><canvas id="city"></canvas></div></div>
-    <div class="card chart-card"><h3>Area</h3><div class="chart-wrap"><canvas id="area"></canvas></div></div>
-    <div class="card chart-card"><h3>Lab Code</h3><div class="chart-wrap"><canvas id="lab"></canvas></div></div>
-  </section>
-
-  <section class="card table-card">
-    <div class="table-head"><h3>Training Records</h3><span class="count" id="tableCount">0 records</span></div>
-    <div class="table-scroll"><table><thead><tr>
-      <th>Lab Code</th><th>Area Name</th><th>Governorate</th><th>City</th><th>Site Name</th><th>Trainer Name</th><th>Training Date</th><th>Employee ID</th><th>Employee Name</th><th>Employee Status</th><th>Department</th><th>Job Title</th><th>Training Type</th><th>Provider</th><th>Training Type 2</th><th>Training Program</th><th>Duration (Hours)</th><th>Trainer Notes</th>
-    </tr></thead><tbody id="tbody"></tbody></table></div>
-  </section>
-
-  <footer class="footer">
-    <div class="ar">جميع الحقوق محفوظة لـ الفا لاب</div>
-    <div class="ar">إدارة البيئة والسلامة والصحة المهنية</div>
-    <div class="eng">Created by Hossam Elsharabasy — HSE Manager</div>
-    <div class="tag">Safer Today ... A Healthier Tomorrow</div>
-  </footer>
-</section>
-</main>
-
+<aside class="sidebar" id="sidebar"><div class="brand"><img src="./LOGOG.png" alt="Alfa Labs Logo"><b>Alfa Labs</b><span>Alfa Labs • HSE Platform</span></div><nav class="nav"><a href="index.html"><span class="ico">🏠</span>الرئيسية</a><a href="capa.html"><span class="ico">📋</span>CAPA</a><a class="active" href="training.html"><span class="ico">🎓</span>Training</a><a href="#"><span class="ico">👁️</span>Safety Observations</a><a href="#"><span class="ico">🚨</span>Incidents</a><a href="#"><span class="ico">⚠️</span>Near Miss</a><a href="#"><span class="ico">🔎</span>Inspections</a><a href="#"><span class="ico">🔥</span>Fire Safety</a><a href="#"><span class="ico">🩹</span>First Aid</a><a href="#"><span class="ico">📊</span>Analytics</a><a href="#"><span class="ico">📄</span>Reports</a><a href="#"><span class="ico">⚙️</span>Settings</a></nav></aside>
+<div class="overlay" id="overlay"></div><main class="main"><header class="topbar"><div style="display:flex;align-items:center;gap:12px"><button class="menu" id="menu">☰</button><div class="title"><h1>Training Management</h1><p>Training Record &amp; HSE Training Analytics</p></div></div><div class="user"><div class="avatar">H</div><div><b style="font-size:13px">HSE Manager</b><div style="font-size:11px;color:#78869a">Alfa Labs</div></div></div></header>
+<section class="content"><div class="hero"><h2>Training Management &amp; Analytics</h2><p>Analyze the complete Training Record using Year, Month, From Date and To Date filters.</p></div><section class="filters"><h3>Time Filters</h3><div class="filter-grid"><div class="field"><label>Year</label><select id="year"><option value="">All Years</option></select></div><div class="field"><label>Month</label><select id="month"><option value="">All Months</option><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select></div><div class="field"><label>From Date</label><input id="from" type="date"></div><div class="field"><label>To Date</label><input id="to" type="date"></div><div class="actions"><button class="btn btn-primary" id="apply">Apply Filters</button><button class="btn btn-light" id="reset">Reset</button></div></div></section>
+<section class="kpis"><div class="kpi k1"><small>Training Records</small><strong id="kRecords">—</strong></div><div class="kpi k2"><small>Employees Trained</small><strong id="kEmployees">—</strong></div><div class="kpi k3"><small>Training Hours</small><strong id="kHours">—</strong></div><div class="kpi k4"><small>Departments</small><strong id="kDepartments">—</strong></div><div class="kpi k5"><small>Training Programs</small><strong id="kPrograms">—</strong></div><div class="kpi k6"><small>Training Providers</small><strong id="kProviders">—</strong></div></section>
+<section class="grid"><div class="card chart-card wide"><h3>Training Trend</h3><div class="chart-wrap"><canvas id="trend"></canvas></div></div><div class="card chart-card"><h3>Employee Status</h3><div class="chart-wrap"><canvas id="status"></canvas></div></div><div class="card chart-card"><h3>Training Type</h3><div class="chart-wrap"><canvas id="type"></canvas></div></div><div class="card chart-card"><h3>Department</h3><div class="chart-wrap"><canvas id="department"></canvas></div></div><div class="card chart-card"><h3>Job Title</h3><div class="chart-wrap"><canvas id="job"></canvas></div></div><div class="card chart-card"><h3>Training Program</h3><div class="chart-wrap"><canvas id="program"></canvas></div></div><div class="card chart-card"><h3>Training Provider</h3><div class="chart-wrap"><canvas id="provider"></canvas></div></div><div class="card chart-card"><h3>Site</h3><div class="chart-wrap"><canvas id="site"></canvas></div></div><div class="card chart-card"><h3>Governorate</h3><div class="chart-wrap"><canvas id="gov"></canvas></div></div><div class="card chart-card"><h3>City</h3><div class="chart-wrap"><canvas id="city"></canvas></div></div><div class="card chart-card"><h3>Area</h3><div class="chart-wrap"><canvas id="area"></canvas></div></div><div class="card chart-card"><h3>Lab Code</h3><div class="chart-wrap"><canvas id="lab"></canvas></div></div></section>
+<section class="card table-card"><div class="table-head"><h3>Training Records</h3><span class="count" id="tableCount">0 records</span></div><div class="table-scroll"><table><thead><tr><th>Lab Code</th><th>Area Name</th><th>Governorate</th><th>City</th><th>Site Name</th><th>Trainer Name</th><th>Training Date</th><th>Employee ID</th><th>Employee Name</th><th>Employee Status</th><th>Department</th><th>Job Title</th><th>Training Type</th><th>Provider</th><th>Training Type 2</th><th>Training Program</th><th>Duration (Hours)</th><th>Trainer Notes</th></tr></thead><tbody id="tbody"></tbody></table></div></section>
+<footer class="footer"><div class="ar">جميع الحقوق محفوظة لـ الفا لاب</div><div class="ar">إدارة البيئة والسلامة والصحة المهنية</div><div class="eng">Created by Hossam Elsharabasy — HSE Manager</div><div class="tag">Safer Today ... A Healthier Tomorrow</div></footer></section></main>
 <script>
-const DATA_URL="training-data.json";
-let allData=[], filtered=[], charts={};
-const C={
-  lab:"Lab Code", area:"Area Name", gov:"Governorate", city:"City", site:"Site Name",
-  trainer:"اسم المدرب | Trainer Name", date:"تاريخ التدريب | Training Date", id:"الرقم الوظيفي / ID",
-  employee:"اسم الموظف | Employee Name", status:"Employee Status / حالة الموظف",
-  dept:"الإدارة / القسم | Department", job:"الوظيفة | Job Title",
-  type1:"نوع التدريب Training Type", provider:"جهة التدريب | Training Provider",
-  type2:"نوع التدريب | Training Type", program:"البرامج التدريبي | Training Program",
-  duration:"مدة التدريب | Duration (Hours)", notes:"ملاحظات المدرب | Trainer Notes"
-};
-const clean=v=>v==null?"":String(v).trim();
-const label=v=>clean(v)||"Not Specified";
-const countBy=(arr,key)=>{const m={};arr.forEach(r=>{const x=label(r[key]);m[x]=(m[x]||0)+1});return Object.entries(m).sort((a,b)=>b[1]-a[1]);};
-const uniq=arr=>[...new Set(arr.map(clean).filter(Boolean))];
-const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
-function parseDate(v){if(!v)return null;const s=String(v);const d=new Date(s+"T00:00:00");return isNaN(d)?null:d}
-function destroy(id){if(charts[id])charts[id].destroy()}
-function palette(n){const p=["#1266d6","#16a36a","#f59e0b","#d92d3a","#7c3aed","#0891b2","#475569","#0f766e","#be123c","#4f46e5"];return Array.from({length:n},(_,i)=>p[i%p.length])}
-function bar(id,items,horiz=false){
- destroy(id); const [labels,vals]=[items.map(x=>x[0]),items.map(x=>x[1])];
- charts[id]=new Chart(document.getElementById(id),{type:"bar",data:{labels,datasets:[{data:vals,backgroundColor:palette(vals.length),borderRadius:5}]},
- options:{responsive:true,maintainAspectRatio:false,indexAxis:horiz?"y":"x",plugins:{legend:{display:false}},scales:{x:{beginAtZero:true},y:{beginAtZero:true}}}});
-}
-function doughnut(id,items){
- destroy(id);charts[id]=new Chart(document.getElementById(id),{type:"doughnut",data:{labels:items.map(x=>x[0]),datasets:[{data:items.map(x=>x[1]),backgroundColor:palette(items.length),borderWidth:2,borderColor:"#fff"}]},
- options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"bottom"}}}});
-}
-function trend(){
- destroy("trend");const m={};filtered.forEach(r=>{const d=parseDate(r[C.date]);if(d){const k=d.toISOString().slice(0,7);m[k]=(m[k]||0)+1}});
-const keys=Object.keys(m).sort();charts.trend=new Chart(document.getElementById("trend"),{type:"line",data:{labels:keys,datasets:[{label:"Training Records",data:keys.map(k=>m[k]),tension:.3,fill:false,borderWidth:3,pointRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true}},scales:{y:{beginAtZero:true}}}});
-}
-function apply(){
- const y=document.getElementById("year").value, mo=document.getElementById("month").value;
- const from=document.getElementById("from").value,to=document.getElementById("to").value;
- filtered=allData.filter(r=>{const d=parseDate(r[C.date]); if(!d)return !y&&!mo&&!from&&!to;
-   if(y && d.getFullYear()!=+y)return false;if(mo && d.getMonth()+1!=+mo)return false;
-   if(from && d<new Date(from+"T00:00:00"))return false;if(to && d>new Date(to+"T23:59:59"))return false;return true;});
- render();
-}
-function render(){
- document.getElementById("kRecords").textContent=filtered.length.toLocaleString();
- document.getElementById("kEmployees").textContent=uniq(filtered.map(r=>r[C.employee])).length.toLocaleString();
- document.getElementById("kHours").textContent=filtered.reduce((s,r)=>s+(parseFloat(String(r[C.duration]??"").replace(",",""))||0),0).toLocaleString(undefined,{maximumFractionDigits:1});
- document.getElementById("kDepartments").textContent=uniq(filtered.map(r=>r[C.dept])).length.toLocaleString();
- document.getElementById("kPrograms").textContent=uniq(filtered.map(r=>r[C.program])).length.toLocaleString();
- document.getElementById("kProviders").textContent=uniq(filtered.map(r=>r[C.provider])).length.toLocaleString();
- trend();
- doughnut("status",countBy(filtered,C.status));
- doughnut("type",countBy(filtered,C.type1));
- bar("department",countBy(filtered,C.dept).slice(0,20),true);
- bar("job",countBy(filtered,C.job).slice(0,20),true);
- bar("program",countBy(filtered,C.program).slice(0,20),true);
- bar("provider",countBy(filtered,C.provider).slice(0,20),true);
- bar("site",countBy(filtered,C.site).slice(0,20),true);
- bar("gov",countBy(filtered,C.gov).slice(0,20),true);
- bar("city",countBy(filtered,C.city).slice(0,20),true);
- bar("area",countBy(filtered,C.area).slice(0,20),true);
- bar("lab",countBy(filtered,C.lab).slice(0,20),true);
- document.getElementById("tableCount").textContent=filtered.length.toLocaleString()+" records";
- const max=2000; document.getElementById("tbody").innerHTML=filtered.slice(0,max).map(r=>`<tr>
- <td>${esc(r[C.lab])}</td><td>${esc(r[C.area])}</td><td>${esc(r[C.gov])}</td><td>${esc(r[C.city])}</td><td>${esc(r[C.site])}</td><td>${esc(r[C.trainer])}</td><td>${esc(r[C.date])}</td><td>${esc(r[C.id])}</td><td>${esc(r[C.employee])}</td><td>${esc(r[C.status])}</td><td>${esc(r[C.dept])}</td><td>${esc(r[C.job])}</td><td>${esc(r[C.type1])}</td><td>${esc(r[C.provider])}</td><td>${esc(r[C.type2])}</td><td>${esc(r[C.program])}</td><td>${esc(r[C.duration])}</td><td>${esc(r[C.notes])}</td>
- </tr>`).join("");
-}
-async function init(){
- try{
-  const res=await fetch(DATA_URL,{cache:"no-store"});if(!res.ok)throw new Error("Data file not found");
-  allData=await res.json();
-  const years=uniq(allData.map(r=>{const d=parseDate(r[C.date]);return d?d.getFullYear():""})).sort();
-  years.forEach(y=>document.getElementById("year").insertAdjacentHTML("beforeend",`<option>${esc(y)}</option>`));
-  apply();
- }catch(e){document.querySelector(".hero p").textContent="Unable to load training-data.json. Keep training.html and training-data.json in the same folder."}
-}
-document.getElementById("apply").onclick=apply;
-document.getElementById("reset").onclick=()=>{document.getElementById("year").value="";document.getElementById("month").value="";document.getElementById("from").value="";document.getElementById("to").value="";apply()};
-document.getElementById("menu").onclick=()=>{document.getElementById("sidebar").classList.add("open");document.getElementById("overlay").classList.add("show")};
-document.getElementById("overlay").onclick=()=>{document.getElementById("sidebar").classList.remove("open");document.getElementById("overlay").classList.remove("show")};
-init();
-</script>
-</body>
-</html>
+const DATA_URL="training-data.json";let allData=[],filtered=[],charts={};const C={lab:"Lab Code",area:"Area Name",gov:"Governorate",city:"City",site:"Site Name",trainer:"اسم المدرب | Trainer Name",date:"تاريخ التدريب | Training Date",id:"الرقم الوظيفي / ID",employee:"اسم الموظف | Employee Name",status:"Employee Status / حالة الموظف",dept:"الإدارة / القسم | Department",job:"الوظيفة | Job Title",type1:"نوع التدريب Training Type",provider:"جهة التدريب | Training Provider",type2:"نوع التدريب | Training Type",program:"البرامج التدريبي | Training Program",duration:"مدة التدريب | Duration (Hours)",notes:"ملاحظات المدرب | Trainer Notes"};
+const clean=v=>v==null?"":String(v).trim();const label=v=>clean(v)||"Not Specified";const countBy=(arr,key)=>{const m={};arr.forEach(r=>{const x=label(r[key]);m[x]=(m[x]||0)+1});return Object.entries(m).sort((a,b)=>b[1]-a[1]);};const uniq=arr=>[...new Set(arr.map(clean).filter(Boolean))];const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));function parseDate(v){if(!v)return null;const d=new Date(String(v)+"T00:00:00");return isNaN(d)?null:d}function destroy(id){if(charts[id])charts[id].destroy()}function palette(n){const p=["#1266d6","#16a36a","#f59e0b","#d92d3a","#7c3aed","#0891b2","#475569","#0f766e","#be123c","#4f46e5"];return Array.from({length:n},(_,i)=>p[i%p.length])}function bar(id,items,horiz=false){destroy(id);const[labels,vals]=[items.map(x=>x[0]),items.map(x=>x[1])];charts[id]=new Chart(document.getElementById(id),{type:"bar",data:{labels,datasets:[{data:vals,backgroundColor:palette(vals.length),borderRadius:5}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:horiz?"y":"x",plugins:{legend:{display:false}},scales:{x:{beginAtZero:true},y:{beginAtZero:true}}}})}function doughnut(id,items){destroy(id);charts[id]=new Chart(document.getElementById(id),{type:"doughnut",data:{labels:items.map(x=>x[0]),datasets:[{data:items.map(x=>x[1]),backgroundColor:palette(items.length),borderWidth:2,borderColor:"#fff"}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"bottom"}}}})}function trend(){destroy("trend");const m={};filtered.forEach(r=>{const d=parseDate(r[C.date]);if(d){const k=d.toISOString().slice(0,7);m[k]=(m[k]||0)+1}});const keys=Object.keys(m).sort();charts.trend=new Chart(document.getElementById("trend"),{type:"line",data:{labels:keys,datasets:[{label:"Training Records",data:keys.map(k=>m[k]),tension:.3,fill:false,borderWidth:3,pointRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true}},scales:{y:{beginAtZero:true}}}})}function apply(){const y=document.getElementById("year").value,mo=document.getElementById("month").value,from=document.getElementById("from").value,to=document.getElementById("to").value;filtered=allData.filter(r=>{const d=parseDate(r[C.date]);if(!d)return!y&&!mo&&!from&&!to;if(y&&d.getFullYear()!=+y)return false;if(mo&&d.getMonth()+1!=+mo)return false;if(from&&d<new Date(from+"T00:00:00"))return false;if(to&&d>new Date(to+"T23:59:59"))return false;return true});render()}function render(){document.getElementById("kRecords").textContent=filtered.length.toLocaleString();document.getElementById("kEmployees").textContent=uniq(filtered.map(r=>r[C.employee])).length.toLocaleString();document.getElementById("kHours").textContent=filtered.reduce((s,r)=>s+(parseFloat(String(r[C.duration]??"").replace(",",""))||0),0).toLocaleString(undefined,{maximumFractionDigits:1});document.getElementById("kDepartments").textContent=uniq(filtered.map(r=>r[C.dept])).length.toLocaleString();document.getElementById("kPrograms").textContent=uniq(filtered.map(r=>r[C.program])).length.toLocaleString();document.getElementById("kProviders").textContent=uniq(filtered.map(r=>r[C.provider])).length.toLocaleString();trend();doughnut("status",countBy(filtered,C.status));doughnut("type",countBy(filtered,C.type1));bar("department",countBy(filtered,C.dept).slice(0,20),true);bar("job",countBy(filtered,C.job).slice(0,20),true);bar("program",countBy(filtered,C.program).slice(0,20),true);bar("provider",countBy(filtered,C.provider).slice(0,20),true);bar("site",countBy(filtered,C.site).slice(0,20),true);bar("gov",countBy(filtered,C.gov).slice(0,20),true);bar("city",countBy(filtered,C.city).slice(0,20),true);bar("area",countBy(filtered,C.area).slice(0,20),true);bar("lab",countBy(filtered,C.lab).slice(0,20),true);document.getElementById("tableCount").textContent=filtered.length.toLocaleString()+" records";document.getElementById("tbody").innerHTML=filtered.slice(0,2000).map(r=>`<tr><td>${esc(r[C.lab])}</td><td>${esc(r[C.area])}</td><td>${esc(r[C.gov])}</td><td>${esc(r[C.city])}</td><td>${esc(r[C.site])}</td><td>${esc(r[C.trainer])}</td><td>${esc(r[C.date])}</td><td>${esc(r[C.id])}</td><td>${esc(r[C.employee])}</td><td>${esc(r[C.status])}</td><td>${esc(r[C.dept])}</td><td>${esc(r[C.job])}</td><td>${esc(r[C.type1])}</td><td>${esc(r[C.provider])}</td><td>${esc(r[C.type2])}</td><td>${esc(r[C.program])}</td><td>${esc(r[C.duration])}</td><td>${esc(r[C.notes])}</td></tr>`).join("")}
+async function init(){try{const res=await fetch(DATA_URL,{cache:"no-store"});if(!res.ok)throw new Error("Data file not found");allData=await res.json();const years=uniq(allData.map(r=>{const d=parseDate(r[C.date]);return d?d.getFullYear():""})).sort();years.forEach(y=>document.getElementById("year").insertAdjacentHTML("beforeend",`<option>${esc(y)}</option>`));apply()}catch(e){document.querySelector(".hero p").textContent="Unable to load training-data.json. Keep training.html and training-data.json in the same folder."}}
+document.getElementById("apply").onclick=apply;document.getElementById("reset").onclick=()=>{document.getElementById("year").value="";document.getElementById("month").value="";document.getElementById("from").value="";document.getElementById("to").value="";apply()};document.getElementById("menu").onclick=()=>{document.getElementById("sidebar").classList.add("open");document.getElementById("overlay").classList.add("show")};document.getElementById("overlay").onclick=()=>{document.getElementById("sidebar").classList.remove("open");document.getElementById("overlay").classList.remove("show")};if("scrollRestoration"in history)history.scrollRestoration="manual";window.addEventListener("pageshow",()=>window.scrollTo(0,0));document.querySelectorAll(".nav a[href]").forEach(a=>a.addEventListener("click",()=>{if(a.getAttribute("href")!=="#")window.scrollTo(0,0)}));init();
+</script></body></html>
