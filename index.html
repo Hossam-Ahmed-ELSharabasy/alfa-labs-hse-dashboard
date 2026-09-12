@@ -154,6 +154,11 @@ html{scroll-behavior:smooth}body{font-family:Arial,Tahoma,sans-serif;background:
 .card-title::before,.card-title::after,.card-title h3::before,.card-title h3::after,.card-title span::before,.card-title span::after{content:none!important;display:none!important;background:none!important;box-shadow:none!important;border:0!important;}
 .card-title{position:relative;overflow:visible!important;}
 </style>
+
+<style id="hard-remove-dashboard-circles">
+/* FINAL HARD FIX */
+.insight-grid .card:before,.insight-grid .card:after,.card-title:before,.card-title:after{content:none!important;display:none!important;background:none!important;box-shadow:none!important;border:0!important;opacity:0!important;width:0!important;height:0!important;}
+</style>
 </head>
 <body>
 <aside class="sidebar" id="sidebar">
