@@ -6,6 +6,8 @@ on:
       - '__temp__'
       - '__temp2__'
       - '__temp3__'
+permissions:
+  contents: write
 jobs:
   patch:
     runs-on: ubuntu-latest
