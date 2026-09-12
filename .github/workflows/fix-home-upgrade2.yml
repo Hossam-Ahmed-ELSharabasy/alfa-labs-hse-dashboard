@@ -1,0 +1,27 @@
+name: Fix Home Upgrade Workflow 2
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fix regex replacement
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('.github/workflows/upgrade-home.yml')
+          s=p.read_text(encoding='utf-8')
+          s=s.replace("s=re.sub(r'<script>.*?</script>\\s*</body>',js+'\\n</body>',s,count=1,flags=re.S)","s=re.sub(r'<script>.*?</script>\\s*</body>',lambda m: js+'\\n</body>',s,count=1,flags=re.S)")
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/workflows/upgrade-home.yml
+          git diff --cached --quiet || git commit -m "Fix home upgrade regex"
+          git push
