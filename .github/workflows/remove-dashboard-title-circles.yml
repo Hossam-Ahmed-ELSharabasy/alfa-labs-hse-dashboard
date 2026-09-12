@@ -1,0 +1,30 @@
+name: Remove dashboard title circles
+on:
+  push:
+    paths:
+      - '.github/workflows/remove-dashboard-title-circles.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove decorative title circles
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          css = '''\n<style id="remove-dashboard-title-circles">\n/* FINAL: remove decorative colored circles behind dashboard card titles */\n.card-title::before,.card-title::after,.card-title h3::before,.card-title h3::after,.card-title span::before,.card-title span::after{content:none!important;display:none!important;background:none!important;box-shadow:none!important;border:0!important;}\n.card-title{position:relative;overflow:visible!important;}\n</style>\n'''
+          if 'remove-dashboard-title-circles' not in s:
+              s = s.replace('</head>', css + '</head>', 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit change
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git diff --cached --quiet || git commit -m 'Remove decorative circles from dashboard titles'
+          git push
