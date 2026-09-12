@@ -1,0 +1,28 @@
+name: Hide Training Records KPI
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Hide the inaccurate total card
+        run: |
+          python - <<'PY'
+          p='training.html'
+          s=open(p,encoding='utf-8').read()
+          marker='</style>'
+          css='\n/* Hide Training Records KPI: source row count is not a real training metric */\n.kpi.k1{display:none!important}\n@media(min-width:1201px){.kpis{grid-template-columns:repeat(5,1fr)}}\n'
+          if 'Hide Training Records KPI: source row count is not a real training metric' not in s:
+              s=s.replace(marker,css+marker,1)
+          open(p,'w',encoding='utf-8').write(s)
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add training.html
+          git commit -m 'Remove inaccurate Training Records KPI card'
+          git push
