@@ -277,6 +277,13 @@ body{margin:0;font-family:Arial,"Segoe UI",Tahoma,sans-serif;background:var(--bg
 @media(max-width:700px){.unified-header{min-height:70px;padding:10px 14px;gap:8px}.unified-left{gap:9px}.unified-title h1,.unified-title h2{font-size:19px}.unified-title p{font-size:10px;margin-top:3px}.unified-meta{gap:6px;flex-direction:column;align-items:flex-end}.live-clock{font-size:10px;padding:6px 8px}.update-status{font-size:9px;gap:5px}.update-dot{width:7px;height:7px;box-shadow:0 0 0 3px #e4f4ea}}
 @media(max-width:430px){.unified-title h1,.unified-title h2{font-size:16px}.unified-title p{font-size:9px}.live-clock{font-size:9px;padding:5px 6px}.update-status{font-size:8px}.unified-meta{gap:4px}}
 
+
+/* Mobile Alfa Labs logo in header */
+.mobile-header-logo{display:none}
+@media(max-width:800px){
+  .mobile-header-logo{display:block!important;width:52px!important;height:42px!important;object-fit:contain!important;background:#fff;border-radius:7px;padding:3px;flex:0 0 52px;box-shadow:0 2px 7px rgba(0,0,0,.12)}
+  .header{position:relative}
+}
 </style>
 
 <style>
@@ -439,7 +446,7 @@ body{margin:0;font-family:Arial,"Segoe UI",Tahoma,sans-serif;background:var(--bg
   <div class="menu-title">MAIN</div>
   <nav class="menu">
     <a href="index.html"><span class="icon">🏠</span>الرئيسية</a>
-    <a href="capa.html" class="active"><span class="icon">📋</span>CAPA</a>
+    <a href="capa.html" class="active"><span class="icon">📋</span>CAPA</a><a href="training.html"><span class="icon">🎓</span><span>Training</span></a>
     <a href="#"><span class="icon">👁️</span>Safety Observations</a>
     <a href="#"><span class="icon">🚨</span>Incidents</a>
     <a href="#"><span class="icon">⚠️</span>Near Miss</a>
