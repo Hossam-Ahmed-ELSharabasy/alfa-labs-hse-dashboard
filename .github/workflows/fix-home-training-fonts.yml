@@ -1,0 +1,41 @@
+name: Fix Home and Training Fonts
+on:
+  push:
+    branches: [main]
+
+jobs:
+  patch:
+    if: github.event.head_commit.message != 'Fix Home KPI underline and Training KPI font'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply visual fixes
+        shell: python
+        run: |
+          from pathlib import Path
+          # HOME: remove link underlines from KPI cards and make numbers clean.
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          css = '''\n/* FINAL FONT CLEANUP */\n.kpis .kpi,.kpis .kpi:visited,.kpis .kpi:hover,.kpis .kpi:active{text-decoration:none!important}\n.kpis .kpi-value{text-decoration:none!important}\n.kpis .kpi-value,.kpis .kpi-value *{border-bottom:0!important;text-decoration:none!important}\n''' 
+          if '/* FINAL FONT CLEANUP */' not in s:
+              s = s.replace('</style>', css + '</style>', 1)
+          p.write_text(s, encoding='utf-8')
+
+          # TRAINING: make KPI numbers substantially larger and easier to read,
+          # while keeping the 5-card layout after the non-real Training Records card is hidden.
+          p = Path('training.html')
+          s = p.read_text(encoding='utf-8')
+          css = '''\n/* TRAINING KPI FONT FINAL */\n.kpis .kpi strong{font-size:42px!important;line-height:1.05!important;font-weight:900!important;letter-spacing:.2px!important;margin-top:10px!important}\n.kpis .kpi small{font-size:14px!important;font-weight:700!important}\n@media(max-width:1200px){.kpis .kpi strong{font-size:38px!important}}\n@media(max-width:800px){.kpis .kpi strong{font-size:32px!important}.kpis .kpi small{font-size:12px!important}}\n@media(max-width:430px){.kpis .kpi strong{font-size:30px!important}}\n''' 
+          if '/* TRAINING KPI FONT FINAL */' not in s:
+              s = s.replace('</style>', css + '</style>', 1)
+          p.write_text(s, encoding='utf-8')
+      - name: Commit fixes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html training.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Fix Home KPI underline and Training KPI font"
+          git push
