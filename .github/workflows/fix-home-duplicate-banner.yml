@@ -1,0 +1,56 @@
+name: Fix Home duplicate banner
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch Home UI
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          marker='/* HOME UI HOTFIX V1 */'
+          if marker not in s:
+              patch=r'''<script>
+          /* HOME UI HOTFIX V1 */
+          (function(){
+            function clean(){
+              try{
+                const candidates=[...document.querySelectorAll('body *')].filter(el=>{
+                  const t=(el.textContent||'').replace(/\s+/g,' ').trim();
+                  return t.includes('Executive HSE Overview') && t.includes('CAPA performance and Training activity') && t.length<500;
+                });
+                const boxes=[];
+                candidates.forEach(el=>{
+                  let p=el;
+                  for(let i=0;i<5 && p && p!==document.body;i++,p=p.parentElement){
+                    const t=(p.textContent||'').replace(/\s+/g,' ').trim();
+                    if(t.includes('Executive HSE Overview') && t.includes('CAPA performance and Training activity') && t.length<700){ boxes.push(p); break; }
+                  }
+                });
+                const unique=[]; boxes.forEach(b=>{if(!unique.some(x=>x===b||x.contains(b)||b.contains(x))) unique.push(b)});
+                if(unique.length>1) unique.slice(1).forEach(b=>b.remove());
+                if(document.body.innerText.includes('CAPA + Training live data connected')){
+                  document.querySelectorAll('.load-error').forEach(e=>e.classList.remove('show'));
+                }
+              }catch(e){console.warn('Home UI hotfix',e)}
+            }
+            if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',clean); else clean();
+            setTimeout(clean,800); setTimeout(clean,1800);
+          })();
+          </script>\n'''
+              s=s.replace('</body>',patch+'</body>',1)
+              p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit Home hotfix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then echo "No changes"; else git commit -m "Fix Home duplicate banner and stale error"; git push; fi
