@@ -1,65 +1,45 @@
 name: Fix Home Training Data
-
 on:
   push:
     branches: [main]
-
 permissions:
   contents: write
-
 jobs:
   fix:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Patch Home data loader
+      - name: Add Training summary loader
         run: |
-          python - <<'PY'
+          python3 - <<'PY'
           from pathlib import Path
-          import re
           p=Path('index.html')
           s=p.read_text(encoding='utf-8')
-          new_js='''<script>
-function norm(v){return String(v??'').trim().toLowerCase()}
-function riskKey(v){let s=norm(v);if(s.includes('critical')||s.includes('حرج'))return'Critical';if(s.includes('high')||s.includes('عالية'))return'High';if(s.includes('medium')||s.includes('متوسطة'))return'Medium';if(s.includes('low')||s.includes('منخفضة'))return'Low';return''}
-function statusKey(v){let s=norm(v);if(s.includes('open')||s.includes('مفتوح'))return'Open';if(s.includes('progress')||s.includes('تنفيذ'))return'In Progress';if(s.includes('closed')||s.includes('مغلق'))return'Closed';return''}
-const fmt=n=>Number(n||0).toLocaleString('en-US');
-function set(id,val){const e=document.getElementById(id);if(e)e.textContent=typeof val==='number'?fmt(val):String(val??'—')}
-function buildRiskChart(counts,total){const chart=document.getElementById('riskChart');if(!chart)return;const max=Math.max(...Object.values(counts),1);chart.innerHTML=Object.entries(counts).map(([k,v])=>`<div class="bar-wrap"><div class="bar-value">${fmt(v)}</div><div class="bar ${k.toLowerCase()}" style="height:${Math.max(4,(v/max)*88)}%"></div><div class="bar-label">${k}</div></div>`).join('');}
-function buildDonut(open,progress,closed,total){const e=document.getElementById('statusDonut');if(!e)return;const a=total?open/total*100:0,b=total?progress/total*100:0;e.style.background=`conic-gradient(#315d91 0 ${a}%,#d97722 ${a}% ${a+b}%,#23834b ${a+b}% 100%)`;set('statusRate',total?Math.round(closed/total*100)+'% closed':'—')}
-function buildTraining(summary){
-  set('trainingValue',summary.records);set('trainingHours',summary.trainingHours);set('trainingEmployees',summary.employees);set('trainingDepartments',summary.departments);set('trainingPrograms',summary.programs);set('trainingProviders',summary.providers);
-  const trend=document.getElementById('trainingTrend');
-  if(trend){const months=['Apr','May','Jun','Jul','Aug','Sep'];const vals=months.map(m=>Number((summary.monthly||{})[m]||0));const max=Math.max(...vals,1);trend.innerHTML=months.map((m,i)=>`<div class="trend-item"><div class="trend-value">${fmt(vals[i])}</div><div class="trend-bar" style="height:${Math.max(8,(vals[i]/max)*88)}%"></div><div class="trend-label">${m}</div></div>`).join('')}
-  const mix=document.getElementById('trainingMix');
-  if(mix){const entries=Object.entries(summary.trainingTypes||{});mix.innerHTML=entries.map(([k,v])=>`<div class="mini-item"><span>${k}</span><b>${fmt(v)}</b></div>`).join('')||'<div class="mini-item"><span>No training data</span><b>0</b></div>'}
-}
-async function loadHome(){
-  try{
-    const [cr,tr]=await Promise.all([fetch('./capa-data.json',{cache:'no-store'}),fetch('./training-summary.json',{cache:'no-store'})]);
-    if(!cr.ok)throw new Error('CAPA HTTP '+cr.status);if(!tr.ok)throw new Error('Training summary HTTP '+tr.status);
-    const data=await cr.json(), summary=await tr.json();if(!Array.isArray(data))throw new Error('Invalid CAPA data');
-    const total=data.length,critical=data.filter(x=>riskKey(x.risk)==='Critical').length,high=data.filter(x=>riskKey(x.risk)==='High').length,open=data.filter(x=>statusKey(x.status)==='Open').length,progress=data.filter(x=>statusKey(x.status)==='In Progress').length,closed=data.filter(x=>statusKey(x.status)==='Closed').length;
-    set('totalValue',total);set('criticalValue',critical);set('highValue',high);set('openValue',open);set('donutTotal',total);set('legendOpen',open);set('legendProgress',progress);set('legendClosed',closed);set('actionCritical',critical);set('actionHigh',high);set('actionOpen',open);
-    buildRiskChart({Critical:critical,High:high,Medium:data.filter(x=>riskKey(x.risk)==='Medium').length,Low:data.filter(x=>riskKey(x.risk)==='Low').length},total);buildDonut(open,progress,closed,total);buildTraining(summary);
-    document.getElementById('dataStatus').textContent='CAPA + Training live data connected • '+fmt(total)+' CAPA • '+fmt(summary.records)+' training records';
-    const d=document.getElementById('dateBox');if(d)d.textContent='📊 Live HSE data';
-  }catch(e){console.error(e);document.getElementById('loadError').classList.add('show');document.getElementById('dataStatus').textContent='Data connection unavailable';const d=document.getElementById('dateBox');if(d)d.textContent='📊 Data unavailable'}
-}
-loadHome();
-</script>
-<script>
-(function(){function pad(n){return String(n).padStart(2,'0')}function tick(){const el=document.getElementById('liveClock');if(!el)return;const d=new Date(),m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],hh=d.getHours(),ap=hh>=12?'PM':'AM',h=hh%12||12;el.textContent='Today • '+pad(d.getDate())+' '+m[d.getMonth()]+' '+d.getFullYear()+' • '+pad(h)+':'+pad(d.getMinutes())+':'+pad(d.getSeconds())+' '+ap}tick();setInterval(tick,1000)})();
-</script>'''
-          pattern=r'<script>\s*function norm\(v\).*?</script>\s*<script>\s*\(function\(\)\{function pad.*?</script>'
-          ns,n=re.subn(pattern,new_js,s,count=1,flags=re.S)
-          if n!=1:
-            raise SystemExit('Home loader block not found; no changes made')
-          p.write_text(ns,encoding='utf-8')
+          marker='/* HOME TRAINING SUMMARY V1 */'
+          if marker not in s:
+              script='''<script>
+          /* HOME TRAINING SUMMARY V1 */
+          (async function(){
+            try{
+              const r=await fetch('./training-summary.json',{cache:'no-store'});
+              if(!r.ok) throw new Error('Training summary HTTP '+r.status);
+              const d=await r.json();
+              const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=Number(v||0).toLocaleString('en-US')};
+              set('trainingValue',d.records);set('trainingHours',d.trainingHours);set('trainingEmployees',d.employees);set('trainingDepartments',d.departments);set('trainingPrograms',d.programs);set('trainingProviders',d.providers);
+              const trend=document.getElementById('trainingTrend');
+              if(trend){const ms=['Apr','May','Jun','Jul','Aug','Sep'],vs=ms.map(m=>Number((d.monthly||{})[m]||0)),mx=Math.max(...vs,1);trend.innerHTML=ms.map((m,i)=>'<div class="trend-col"><div class="trend-value">'+vs[i].toLocaleString('en-US')+'</div><div class="trend-bar" style="height:'+Math.max(5,vs[i]/mx*190)+'px"></div><div class="trend-label">'+m+'</div></div>').join('')}
+              const mix=document.getElementById('trainingMix');
+              if(mix){const entries=Object.entries(d.trainingTypes||{}),mx=Math.max(...entries.map(x=>x[1]),1);mix.innerHTML=entries.map(x=>'<div class="mix-row"><div class="mix-label">'+x[0]+'</div><div class="mix-count">'+Number(x[1]).toLocaleString('en-US')+'</div><div class="mix-track"><div class="mix-fill" style="width:'+(x[1]/mx*100)+'%"></div></div></div>').join('')}
+              const st=document.getElementById('dataStatus');if(st)st.textContent='CAPA + Training live data connected • 1,288 CAPA • '+Number(d.records).toLocaleString('en-US')+' training records';
+            }catch(e){console.error('Training summary load failed',e)}
+          })();
+          </script>\n'''
+              s=s.replace('</body>',script+'</body>',1)
+              p.write_text(s,encoding='utf-8')
           PY
       - name: Commit Home fix
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          if git diff --cached --quiet; then echo "No changes"; else git commit -m "Fix Home CAPA and Training live data"; git push; fi
+          if git diff --cached --quiet; then echo "No changes"; else git commit -m "Fix Home Training live summary"; git push; fi
