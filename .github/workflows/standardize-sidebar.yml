@@ -1,6 +1,9 @@
 name: Standardize sidebar
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/standardize-sidebar.yml'
 permissions:
   contents: write
 jobs:
