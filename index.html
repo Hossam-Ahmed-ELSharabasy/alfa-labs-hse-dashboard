@@ -298,5 +298,6 @@ loadCapa();
 /* HOME FINAL PRESENTATION GUARD V5 */
 (function(){function cleanHome(){try{document.querySelectorAll('.load-error').forEach(function(e){e.remove()});var banners=[...document.querySelectorAll('.executive-banner')].filter(function(e){return /Executive HSE Overview/.test(e.textContent||'')});banners.slice(1).forEach(function(e){e.remove()});var total=document.getElementById('totalValue'),status=document.getElementById('dataStatus');if(status&&total&&total.textContent.trim()&&total.textContent.trim()!=='—')status.textContent='CAPA + Training live data connected • 1,288 CAPA • 1,540 training records'}catch(e){console.warn('Home final guard',e)}}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',cleanHome);else cleanHome();setTimeout(cleanHome,700);setTimeout(cleanHome,1800);setTimeout(cleanHome,3000)})();
 </script>
+<script src="./hse-report-generator.js"></script>
 </body>
 </html>
