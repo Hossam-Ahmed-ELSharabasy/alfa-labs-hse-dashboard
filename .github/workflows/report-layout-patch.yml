@@ -1,0 +1,36 @@
+name: Compact HSE Report Layout
+on:
+  push:
+    paths:
+      - 'report-layout-trigger.txt'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compact report pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('hse-report-generator.js')
+          s=p.read_text(encoding='utf-8')
+          old="p++;y=page(doc,p,t,'CAPA — Status & Sites','Status distribution and leading CAPA sites');y=addImg(doc,donut([['Open',open,'#315d91'],['In Progress',progress,'#d97722'],['Closed',closed,'#23834b']],'CAPA Status'),y+3,108)+7;addImg(doc,bars(sites.slice(0,8).map(x=>x[0]),sites.slice(0,8).map(x=>x[1]),'Top CAPA Sites'),y,103);"
+          new="y=addImg(doc,donut([['Open',open,'#315d91'],['In Progress',progress,'#d97722'],['Closed',closed,'#23834b']],'CAPA Status'),y+3,78)+5;addImg(doc,bars(sites.slice(0,8).map(x=>x[0]),sites.slice(0,8).map(x=>x[1]),'Top CAPA Sites'),y,112);"
+          s=s.replace(old,new)
+          old2="p++;y=page(doc,p,t,'Management Notes','Key figures available at report generation time');"
+          new2="doc.setTextColor(23,54,93);doc.setFont('helvetica','bold');doc.setFontSize(10);doc.text('Management Notes',14,242);"
+          s=s.replace(old2,new2)
+          old3="doc.setFont('helvetica','bold');doc.setFontSize(11);notes.forEach((s,i)=>{doc.setFillColor(247,250,253);doc.roundedRect(14,y+i*25,182,18,3,3,'F');doc.setTextColor(23,54,93);doc.text(s,20,y+11+i*25)});doc.save"
+          new3="doc.setFont('helvetica','bold');doc.setFontSize(9);notes.forEach((s,i)=>{doc.setFillColor(247,250,253);doc.roundedRect(14,248+i*16,182,13,2,2,'F');doc.setTextColor(23,54,93);doc.text(s,19,256+i*16)});doc.save"
+          s=s.replace(old3,new3)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add hse-report-generator.js
+          git commit -m 'Compact executive report layout' || true
+          git push
